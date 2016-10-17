@@ -12,6 +12,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.waterworld.tiles.BoardsTile;
+import nl.han.ica.waterworld.tiles.BoardsTile2;
 import processing.core.PApplet;
 
 /**
@@ -90,8 +91,8 @@ public class WaterWorld extends GameEngine {
      * Initialiseert geluid
      */
     private void initializeSound() {
-        backgroundSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/Waterworld.mp3");
-        backgroundSound.loop(-1);
+//        backgroundSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/Waterworld.mp3");
+//        backgroundSound.loop(-1);
         bubblePopSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
     }
 
@@ -102,8 +103,10 @@ public class WaterWorld extends GameEngine {
     private void createObjects() {
         player = new Player(this);
         addGameObject(player, 100, 100);
-        Swordfish sf=new Swordfish(this);
+        Swordfish sf=new Swordfish(this, -2);
+        Swordfish sf2=new Swordfish(this, -1);
         addGameObject(sf,200,200);
+        addGameObject(sf2,300,300);
     }
 
     /**
@@ -145,8 +148,9 @@ public class WaterWorld extends GameEngine {
         /* TILES */
         Sprite boardsSprite = new Sprite("src/main/java/nl/han/ica/waterworld/media/boards.jpg");
         TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
+        TileType<BoardsTile2> boardTileType2 = new TileType<>(BoardsTile2.class, boardsSprite);
 
-        TileType[] tileTypes = { boardTileType };
+        TileType[] tileTypes = { boardTileType, boardTileType2 };
         int tileSize=50;
         int tilesMap[][]={
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
@@ -158,7 +162,7 @@ public class WaterWorld extends GameEngine {
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                {-1,-1,-1, 0, 0, 0, 0,-1,0 , 0},
+                { 1, 2, 1, 0, 0, 0, 0,-1, 0, 0},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},

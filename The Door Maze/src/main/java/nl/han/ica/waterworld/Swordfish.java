@@ -12,13 +12,14 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 public class Swordfish extends SpriteObject {
 
     private WaterWorld world;
+    private float speed;
 
     /**
      * Constructor
      * @param world Referentie naar de wereld
      */
-    public Swordfish(WaterWorld world) {
-        this(new Sprite("src/main/java/nl/han/ica/waterworld/media/swordfish.png"));
+    public Swordfish(WaterWorld world, float speed) {
+        this(new Sprite("src/main/java/nl/han/ica/waterworld/media/swordfish.png"), speed);
         this.world=world;
     }
 
@@ -26,9 +27,10 @@ public class Swordfish extends SpriteObject {
      * Maak een Swordfish aan met een sprite
      * @param sprite De sprite die aan dit object gekoppeld moet worden
      */
-    private Swordfish(Sprite sprite) {
+    private Swordfish(Sprite sprite, float speed) {
         super(sprite);
-        setxSpeed(-1);
+        this.speed = speed;
+        setxSpeed(this.speed);
     }
 
     @Override
