@@ -53,7 +53,7 @@ public class WaterWorld extends GameEngine {
         createBubbleSpawner();
 
         createViewWithoutViewport(worldWidth, worldHeight);
-        //createViewWithViewport(worldWidth, worldHeight, 800, 800, 1.1f);
+//        createViewWithViewport(worldWidth, worldHeight, 800, 800, 1f);
 
     }
 
@@ -80,7 +80,7 @@ public class WaterWorld extends GameEngine {
      */
     private void createViewWithViewport(int worldWidth,int worldHeight,int screenWidth,int screenHeight,float zoomFactor) {
         EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, (int)Math.ceil(screenWidth/zoomFactor),(int)Math.ceil(screenHeight/zoomFactor),0,0);
-        viewPort.setTolerance(50, 50, 50, 50);
+//        viewPort.setTolerance(50, 50, 50, 50);
         View view = new View(viewPort, worldWidth,worldHeight);
         setView(view);
         size(screenWidth, screenHeight);

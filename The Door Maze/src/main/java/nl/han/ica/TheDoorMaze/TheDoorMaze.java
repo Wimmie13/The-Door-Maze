@@ -32,21 +32,23 @@ public class TheDoorMaze extends GameEngine {
 
         createObjects();
 
-        createViewWithViewport(worldWidth, worldHeight, 848, 480, 1F);
+        createViewWithViewport(worldWidth, worldHeight, 848, 480);
     }
 	
-	private void createViewWithViewport(int worldWidth,int worldHeight,int screenWidth,int screenHeight,float zoomFactor) {
-        EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, (int)Math.ceil(screenWidth/zoomFactor),(int)Math.ceil(screenHeight/zoomFactor),0,80);
-        viewPort.setTolerance(0, 0, 50, 0);
+	private void createViewWithViewport(int worldWidth,int worldHeight,int screenWidth,int screenHeight) {
+        EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, screenWidth, screenHeight, 0, 80);
+        viewPort.setTolerance(0, 0, 100, 100);
         View view = new View(viewPort, worldWidth,worldHeight);
         setView(view);
         size(screenWidth, screenHeight);
         view.setBackground(loadImage("src/main/java/nl/han/ica/TheDoorMaze/media/background.fw.png"));
+
+        System.out.println(view.getWorldWidth());
     }
 	
 	private void createObjects() {
         player = new Player(this);
-        addGameObject(player, 1500, 200);
+        addGameObject(player, 300, 200);
     }
 	
 
