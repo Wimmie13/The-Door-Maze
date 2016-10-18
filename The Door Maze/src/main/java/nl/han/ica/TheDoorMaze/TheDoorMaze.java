@@ -47,11 +47,11 @@ public class TheDoorMaze extends GameEngine {
 	
 	private void createObjects() {
         player = new Player(this);
-        addGameObject(player, 1200, 200);
+        addGameObject(player, 300, 200);
         Door bathroomdoor=new Door(this,"src/main/java/nl/han/ica/TheDoorMaze/media/Toilet.png" );
         addGameObject(bathroomdoor, 700,200);
     }
-	
+		
 
     @Override
     public void update() {

@@ -7,6 +7,8 @@ import nl.han.ica.OOPDProcessingEngineHAN.Exceptions.TileNotFoundException;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
+import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import processing.core.PVector;
 
 import java.util.List;
@@ -16,42 +18,67 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     final int height = 240;
     final int width = 100;
+    private int currentFrame;
     private final TheDoorMaze world;
+    
 
     public Player(TheDoorMaze world) {
         super(new Sprite("src/main/java/nl/han/ica/TheDoorMaze/media/player.png"),16);
         this.world=world;
-        setCurrentFrameIndex(1);
+        this.currentFrame = 0;
 //        setFriction(0.05f);
     }
 
     @Override
     public void update() {
-        if (getX()<=100) {
-            setxSpeed(0);
-            setX(100);
+        if (this.getX()<=0) {
+            this.setxSpeed(0);
+            this.setX(0);
         }
-        if (getX()>=world.getView().getWorldWidth()- 200) {
-            setxSpeed(0);
-            setX(world.getView().getWorldWidth()-200);
+        if (this.getX()>=world.getView().getWorldWidth() - this.width) {
+            this.setxSpeed(0);
+            this.setX(world.getView().getWorldWidth() - this.width);
         }
-
+        if (this.getCurrentFrameIndex() != this.currentFrame){
+        	this.setCurrentFrameIndex(this.currentFrame);
+        }
     }
-    @Override
+
+	@Override
     public void keyPressed(int keyCode, char key) {
         final int speed = 5;
         if (keyCode == world.LEFT) {
             setDirectionSpeed(270, speed);
-            setCurrentFrameIndex(0);
+            if(this.currentFrame < 15){
+            	this.nextFrame();
+            } else {
+            	this.currentFrame = 9;
+            }
         }
         if (keyCode == world.RIGHT) {
             setDirectionSpeed(90, speed);
-            setCurrentFrameIndex(1);
+            if(this.currentFrame < 7){
+            	this.nextFrame();
+            } else {
+            	this.currentFrame = 0;
+            }
         }
         if (key == ' ') {
             System.out.println("Spatie!");
         }
     }
+	
+	@Override
+	public void keyReleased(int keyCode, char key){
+		final int speed = 0;
+		setSpeed(speed);
+
+        if (this.getDirection() == 270){
+        	this.currentFrame = 8;
+        } else {
+        	this.currentFrame = 0;
+        }
+	}
     
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
