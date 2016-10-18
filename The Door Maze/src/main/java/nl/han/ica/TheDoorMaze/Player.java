@@ -27,13 +27,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     @Override
     public void update() {
-        if (getX()<=0) {
+        if (getX()<=100) {
             setxSpeed(0);
-            setX(0);
+            setX(100);
         }
-        if (getX()>=world.getWidth() - this.width) {
+        if (getX()>=world.getView().getWorldWidth()- 200) {
             setxSpeed(0);
-            setX(world.getWidth() - this.width);
+            setX(world.getView().getWorldWidth()-200);
         }
 
     }
