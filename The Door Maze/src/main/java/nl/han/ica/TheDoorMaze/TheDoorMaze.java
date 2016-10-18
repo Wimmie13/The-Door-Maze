@@ -13,6 +13,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.View.CenterFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.TheDoorMaze.Player;
+import nl.han.ica.waterworld.Swordfish;
 import processing.core.PApplet;
 
 @SuppressWarnings("serial")
@@ -36,21 +37,21 @@ public class TheDoorMaze extends GameEngine {
     }
 	
 	private void createViewWithViewport(int worldWidth,int worldHeight,int screenWidth,int screenHeight) {
-        EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, screenWidth, screenHeight, 0, 80);
+		EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, screenWidth, screenHeight,0,80);
         viewPort.setTolerance(0, 0, 100, 100);
         View view = new View(viewPort, worldWidth,worldHeight);
         setView(view);
         size(screenWidth, screenHeight);
         view.setBackground(loadImage("src/main/java/nl/han/ica/TheDoorMaze/media/background.fw.png"));
-
-        System.out.println(view.getWorldWidth());
-    }
+	}
 	
 	private void createObjects() {
         player = new Player(this);
         addGameObject(player, 300, 200);
+        Door bathroomdoor=new Door(this,"src/main/java/nl/han/ica/TheDoorMaze/media/Toilet.png" );
+        addGameObject(bathroomdoor, 700,200);
     }
-	
+		
 
     @Override
     public void update() {
