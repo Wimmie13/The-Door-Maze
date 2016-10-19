@@ -82,12 +82,11 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-        for (GameObject g:collidedGameObjects) {
-//            if (g instanceof Swordfish) {
-//            	Random rand = new Random();
-//                setX(rand.nextInt(world.getWidth() + 1 ));
-//                setY(rand.nextInt(world.getHeight() + 1 ));
+//        for (GameObject g:collidedGameObjects) {
+//            if (g instanceof Door) {
+//            	Door c = (Door)g;
+//            	System.out.println("dit is een deur");
 //            }
-        }
+//        }
     }
 }
