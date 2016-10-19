@@ -23,11 +23,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 	private final TheDoorMaze world;
 	private Alarm alarm;
 	private boolean alarmOn;
+	private boolean walkAllowed;
 
 	public Player(TheDoorMaze world) {
 		super(new Sprite("src/main/java/nl/han/ica/TheDoorMaze/media/player.png"), 16);
 		this.world = world;
 		this.alarmOn = false;
+		this.walkAllowed = true;
 	}
 
 	@Override
@@ -44,7 +46,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
 	@Override
 	public void keyPressed(int keyCode, char key) {
-		if (world.inventory.getIsOpen() == false) {
+		if (this.walkAllowed == true) {
 			final int speed = 5;
 			if (keyCode == world.LEFT) {
 				if (this.alarmOn == false) {
@@ -61,6 +63,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 				}
 			}
 			if (key == 'i') {
+				this.setWalkAllowed();
 				world.inventory.setIsOpen();
 				world.inventory.createDashboard();
 				this.setSpeed(0);
@@ -70,6 +73,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 			}
 		} else{
 			if (key == 'i') {
+				this.setWalkAllowed();
 				world.inventory.setIsOpen();
 				world.inventory.removeDashboard();
 			}
@@ -141,5 +145,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 			this.setCurrentFrameIndex(0);
 		}
 		this.startAlarm("Walk right");
+	}
+	
+	public void setWalkAllowed(){
+		this.walkAllowed = !this.walkAllowed;
 	}
 }
