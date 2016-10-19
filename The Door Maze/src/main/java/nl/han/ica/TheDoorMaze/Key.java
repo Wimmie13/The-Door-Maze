@@ -9,15 +9,15 @@ import java.util.List;
 public class Key extends ActionObject implements ICollidableWithGameObjects {
 	private TheDoorMaze world;
 	private static String image = "src/main/java/nl/han/ica/TheDoorMaze/media/objects/key.png";
-    private Sound keySound;
-    
+	private Sound keySound;
+//	private int sw = 0;
+
 	public Key(TheDoorMaze world, String itemName) {
-		super(
-				image, itemName);
+		super(image, itemName);
 		this.world = world;
-		this.keySound = new Sound(world,"src/main/java/nl/han/ica/TheDoorMaze/media/music/item.mp3");
+		this.keySound = new Sound(world, "src/main/java/nl/han/ica/TheDoorMaze/media/music/item.mp3");
 	}
-	
+
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
