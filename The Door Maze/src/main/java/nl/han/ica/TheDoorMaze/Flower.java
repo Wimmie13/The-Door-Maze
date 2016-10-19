@@ -19,7 +19,7 @@ public class Flower extends ActionObject implements ICollidableWithGameObjects {
 	private TheDoorMaze world;
 
 	public Flower(TheDoorMaze world, String itemName) {
-		super("src/main/java/nl/han/ica/TheDoorMaze/media/plant2.png", itemName);
+		super("src/main/java/nl/han/ica/TheDoorMaze/media/objects/plant2.png", itemName);
 		this.world = world;
 	}
 
@@ -34,7 +34,7 @@ public class Flower extends ActionObject implements ICollidableWithGameObjects {
 				if (world.key == ' ' && this.isUsed == false) {
 					this.isUsed = true;
 					System.out.println("SKURT");
-					this.setSprite(new Sprite("src/main/java/nl/han/ica/TheDoorMaze/media/plant2empty.png"));
+					this.setSprite(new Sprite("src/main/java/nl/han/ica/TheDoorMaze/media/objects/plant2empty.png"));
 					this.inventory.addItem(this.itemName);
 				}
 
