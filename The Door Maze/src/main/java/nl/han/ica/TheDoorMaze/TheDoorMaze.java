@@ -26,6 +26,7 @@ public class TheDoorMaze extends GameEngine {
 	private Locker locker;
 	private Computer computer;
 	public static Inventory inventory;
+	public Person person;
 	
 	private Sound backgroundSound;
 
@@ -57,10 +58,13 @@ public class TheDoorMaze extends GameEngine {
 	private void createObjects() {
 		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "1", "BathRoom");
 		addGameObject(bathroomdoor, 700, 130);
-		locker = new Locker(this, "Key #45");
-		addGameObject(locker, 200,200);
-//		computer = new Computer(this, "Barry's files");
-//		addGameObject(computer, 400, 200);
+//		locker = new Locker(this, "Key #45");
+//		addGameObject(locker, 200,200);
+		person = new Person("src/main/java/nl/han/ica/TheDoorMaze/media/objects/G001.png", "Persoon", this, new String[]{"hoi", "ik"}, "Fix mij een Pizza!");
+		addGameObject(person, 400, 200);
+		
+		computer = new Computer(this, "Barry's files");
+		addGameObject(computer, 200, 200);
 		waterfountain = new Waterfountain(this, "Bier");
 		addGameObject(waterfountain, 1000, 218);
 		flower = new Flower(this, "Flower");
