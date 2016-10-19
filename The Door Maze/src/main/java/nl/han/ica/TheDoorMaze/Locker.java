@@ -9,24 +9,37 @@ public class Locker extends ActionObject implements ICollidableWithGameObjects {
 	private TheDoorMaze world;
 	private static String image = "src/main/java/nl/han/ica/TheDoorMaze/media/objects/locker.png";
 	private boolean open;
+	private String lock;
+	private MessageBox message;
 
-	public Locker(TheDoorMaze world, String itemName) {
+	public Locker(TheDoorMaze world, String itemName, String lock) {
 		super(image, itemName);
 		this.world = world;
 		this.open = false;
+		this.message = new MessageBox();
+		this.lock = lock;
 	}
 
-	@SuppressWarnings("static-access")
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
-				if (world.key == ' ' && this.isUsed == false && this.open == true) {
+				if (message.getIsShown() == true && world.key == TheDoorMaze.ENTER){
+					this.checkInput();
+				} else if (world.key == ' ' && this.isUsed == false && this.open == true) {
 					this.isUsed = true;
-					world.inventory.addItem(this.itemName);
+					TheDoorMaze.inventory.addItem(this.itemName);
+				} else if (world.key == ' ' && this.isUsed == false){
+					message = new MessageBox(world, "Locker", "This is the locker of Ricky", "Enter the right values to open the locker.");
+					message.hasInput();
+					((Player) g).setWalkAllowed();
 				}
 			}
 		}
+	}
+	
+	private void checkInput(){
+		
 	}
 	
 	public boolean getOpen(){
