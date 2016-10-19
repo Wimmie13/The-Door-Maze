@@ -50,17 +50,26 @@ public class Inventory extends GameObject {
 
 	@Override
 	public void draw(PGraphics g) {
+		final int marginHeader = 40;
 		final int marginTop = 20;
 		final int marginText = 20;
 		g.fill(200);
 		g.rect(0, 0, this.dashboardWidth, this.dashboardHeight, 5);
-		g.textSize(20);
+		
+		g.fill(0);
+		g.textAlign(CENTER);
+		g.textSize(32);
+		g.text("Inventory", this.dashboardWidth/2, marginHeader);
+
 		g.fill(255, 0, 0);
-		g.text("Quest items", 10, marginTop);
+		g.textAlign(LEFT);
+		g.textSize(20);
+		g.text("Quest items", 10, marginHeader + marginTop);
+		
 		g.fill(0);
 		g.textSize(16);
 		for(int i = 0; i < items.size(); i++){
-			g.text(items.get(i).getName(), 10, marginTop + marginText * (i + 1));
+			g.text(items.get(i).getName(), 10, marginHeader + marginTop + marginText * (i + 1));
 		}
 	}
 
