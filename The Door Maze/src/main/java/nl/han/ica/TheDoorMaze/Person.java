@@ -3,10 +3,10 @@ package nl.han.ica.TheDoorMaze;
 import java.util.List;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
-import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
+
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
-import processing.core.PGraphics;
+
 
 public class Person extends ActionObject implements ICollidableWithGameObjects {
 	private TheDoorMaze world;
@@ -22,7 +22,7 @@ public class Person extends ActionObject implements ICollidableWithGameObjects {
 		this.missionObjective = missionObjective;
 		this.missionComplete = new Sound(world, "src/main/java/nl/han/ica/TheDoorMaze/media/music/missionComplete.mp3");
 	}
-
+	
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
@@ -31,8 +31,7 @@ public class Person extends ActionObject implements ICollidableWithGameObjects {
 					System.out.println("at");
 					this.isUsed = true;
 					this.missionActive = true;
-				} else if (world.key == ' ' && this.missionActive == true
-						&& world.inventory.getItem("Flower") == "Flower") {
+				} else if (world.key == ' ' && this.missionActive == true && TheDoorMaze.inventory.getItem("Flower") == "Flower") {
 					TheDoorMaze.inventory.delItem("Flower");
 					TheDoorMaze.inventory.delMission(this.missionObjective);
 					missionComplete.play();

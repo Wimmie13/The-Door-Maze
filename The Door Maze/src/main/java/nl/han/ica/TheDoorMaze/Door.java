@@ -37,7 +37,6 @@ public class Door extends ActionObject implements ICollidableWithGameObjects {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
 				if (world.keyCode == TheDoorMaze.UP && TheDoorMaze.inventory.getItem(this.naar) == this.naar) {
-					world.keyCode = 0;
 					System.out.println("fakka");
 				}
 
