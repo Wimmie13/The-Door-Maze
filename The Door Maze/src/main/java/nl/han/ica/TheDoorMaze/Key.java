@@ -23,7 +23,7 @@ public class Key extends ActionObject implements ICollidableWithGameObjects {
 			if (g instanceof Player) {
 				if (world.key == ' ' && this.isUsed == false) {
 					this.isUsed = true;
-					ActionObject.inventory.addItem(this.itemName);
+					TheDoorMaze.inventory.addItem(this.itemName);
 					keySound.play();
 					world.deleteGameObject(this);
 				}
