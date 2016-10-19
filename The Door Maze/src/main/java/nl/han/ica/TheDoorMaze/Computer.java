@@ -21,7 +21,6 @@ public class Computer extends ActionObject implements ICollidableWithGameObjects
 		this.hackedSound = new Sound(world, "src/main/java/nl/han/ica/TheDoorMaze/media/music/hacked.mp3");
 	}
 
-	@SuppressWarnings("static-access")
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
@@ -33,7 +32,7 @@ public class Computer extends ActionObject implements ICollidableWithGameObjects
 				}
 				if (world.key == ' ' && this.isUsed == false && this.hacked == true) {
 					this.isUsed = true;
-					world.inventory.addItem(this.itemName);
+					TheDoorMaze.inventory.addItem(this.itemName);
 				}
 			}
 		}
