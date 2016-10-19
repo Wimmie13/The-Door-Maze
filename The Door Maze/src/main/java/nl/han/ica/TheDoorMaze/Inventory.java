@@ -61,28 +61,30 @@ public class Inventory extends GameObject {
 		final int marginHeader = 40;
 		final int marginTop = 25;
 		final int marginText = 20;
+		final int marginLeft = 10;
 		g.stroke(255);
 		g.strokeWeight(10);
 		g.fill(0);
 		g.rect(0, 0, this.dashboardWidth, this.dashboardHeight, 5);
 		
-		g.fill(0);
+		g.fill(255);
 		g.textAlign(CENTER);
 		g.textSize(32);
 		g.text("Inventory", this.dashboardWidth/2, marginHeader);
 
+		g.textAlign(LEFT);
 		g.noStroke();
 		g.textSize(20);
 		g.fill(255, 0, 0);
-		g.text("Quest items", 10, marginTop);
-		g.text("Actieve missie's", 300, marginTop);
-		g.fill(0);
+		g.text("Quest items", marginLeft, marginTop + marginHeader);
+		g.text("Actieve missie's", this.dashboardWidth/2 + marginLeft, marginTop + marginHeader);
+		g.fill(255);
 		g.textSize(16);
 		for(int i = 0; i < items.size(); i++){
-			g.text(items.get(i).getName(), 10, marginHeader + marginTop + marginText * (i + 1));
+			g.text(items.get(i).getName(), marginLeft, marginHeader + marginTop + marginText * (i + 1));
 		}
 		for(int i = 0; i < missies.size(); i++){
-			g.text(missies.get(i).getMission(), 300, marginTop + marginText * (i + 1));
+			g.text(missies.get(i).getMission(), this.dashboardWidth/2 + marginLeft,  marginHeader + marginTop + marginText * (i + 1));
 		}
 	}
 
