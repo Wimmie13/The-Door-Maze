@@ -1,29 +1,19 @@
 package nl.han.ica.TheDoorMaze;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Collision.CollidedTile;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
-import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithTiles;
-import nl.han.ica.OOPDProcessingEngineHAN.Exceptions.TileNotFoundException;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
-import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
-import nl.han.ica.OOPDProcessingEngineHAN.UserInput.IKeyInput;
-import nl.han.ica.waterworld.tiles.BoardsTile2;
-import processing.core.PGraphics;
-import processing.core.PVector;
 
 import java.util.List;
 
 public class Flower extends ActionObject implements ICollidableWithGameObjects {
 	private TheDoorMaze world;
+	private static String image = "src/main/java/nl/han/ica/TheDoorMaze/media/objects/plant2.png";
+	private String emptyImage = "src/main/java/nl/han/ica/TheDoorMaze/media/objects/plant2empty.png";
 
 	public Flower(TheDoorMaze world, String itemName) {
-		super("src/main/java/nl/han/ica/TheDoorMaze/media/objects/plant2.png", itemName);
+		super(image, itemName);
 		this.world = world;
-	}
-
-	public void keyPressed(int keyCode, char key) {
 	}
 
 	@Override
@@ -33,8 +23,7 @@ public class Flower extends ActionObject implements ICollidableWithGameObjects {
 				System.out.println(this.inventory.getItem());
 				if (world.key == ' ' && this.isUsed == false) {
 					this.isUsed = true;
-					System.out.println("SKURT");
-					this.setSprite(new Sprite("src/main/java/nl/han/ica/TheDoorMaze/media/objects/plant2empty.png"));
+					this.setSprite(new Sprite(emptyImage));
 					this.inventory.addItem(this.itemName);
 				}
 
