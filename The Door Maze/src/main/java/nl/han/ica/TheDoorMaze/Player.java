@@ -63,6 +63,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 			if (key == 'i') {
 				world.inventory.setIsOpen();
 				world.inventory.createDashboard();
+				this.setSpeed(0);
+				if (this.alarmOn == true) {
+					startAlarm("STOP");
+				}
 			}
 		} else{
 			if (key == 'i') {
