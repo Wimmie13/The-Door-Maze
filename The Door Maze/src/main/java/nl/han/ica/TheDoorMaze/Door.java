@@ -6,16 +6,18 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import java.util.List;
 
 public class Door extends ActionObject implements ICollidableWithGameObjects {
-	private String naar;
+	private int naar;
 	private TheDoorMaze world;
+	private boolean keyNeeded;
 
-	public Door(TheDoorMaze world, String img, String naar, String itemName) {
+	public Door(TheDoorMaze world, String img, int naar, String itemName, boolean keyNeeded) {
 		super(img, itemName);
 		this.naar = naar;
 		this.world = world;
+		this.keyNeeded = keyNeeded;
 	}
 
-	public String getNaar() {
+	public int getNaar() {
 		return this.naar;
 	}
 
@@ -25,9 +27,13 @@ public class Door extends ActionObject implements ICollidableWithGameObjects {
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
+			System.out.println(TheDoorMaze.inventory.getItem(Integer.toString(this.naar)));
 			if (g instanceof Player) {
-				if (world.keyCode == TheDoorMaze.UP && TheDoorMaze.inventory.getItem(this.naar) == this.naar) {
+				if (world.keyCode == TheDoorMaze.UP && TheDoorMaze.inventory.getItem(Integer.toString(this.naar)) == Integer.toString(this.naar) && keyNeeded == true) {
 					System.out.println("fakka");
+					world.map = this.naar;
+				} else if (world.keyCode == TheDoorMaze.UP && keyNeeded == false){
+					world.map = this.naar;
 				}
 
 			}
