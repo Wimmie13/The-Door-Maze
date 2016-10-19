@@ -7,10 +7,12 @@ public class ActionObject extends SpriteObject {
 	protected String itemName;
 	protected boolean isUsed = false;
 	
-	
 	public ActionObject(String img, String itemName) {
 		super(new Sprite(img));
 		this.itemName = itemName;
+		if (TheDoorMaze.inventory.getItemBoolean(itemName) == true){
+			this.isUsed = true;
+		}
 	}
 
 	@Override

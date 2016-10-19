@@ -7,12 +7,12 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 
 public class Person extends ActionObject implements ICollidableWithGameObjects {
-	private TheDoorMaze world;
 	private String[] text;
 	private static boolean missionActive = false;
 	private String missionObjective;
 	private MessageBox message;
 	private Sound missionComplete;
+	private TheDoorMaze world;
 
 	public Person(String img, String itemName, TheDoorMaze world, String[] text, String missionObjective) {
 		super(img, itemName);

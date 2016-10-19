@@ -29,12 +29,11 @@ public class TheDoorMaze extends GameEngine {
 	public void setupGame() {
 		int worldWidth = 2910;
 		int worldHeight = 480;
-		
+		inventory = new Inventory(this, 848, 480);
 		createObjects();
         initializeSound();
 		createViewWithViewport(worldWidth, worldHeight, 848, 480);
-		
-		inventory = new Inventory(this);
+	
 	}
 
 	private void createViewWithViewport(int worldWidth, int worldHeight, int screenWidth, int screenHeight) {
@@ -51,7 +50,7 @@ public class TheDoorMaze extends GameEngine {
 		addGameObject(bathroomdoor, 700, 130);
 		locker = new Locker(this, "Key #45");
 		addGameObject(locker, 50, 200);
-		person = new Person("src/main/java/nl/han/ica/TheDoorMaze/media/objects/G001.png", "Persoon", this, new String[]{"Yo man, ik heb binnenkort een date zou je voor mij een bloem willen fixen?", "Thx man! neem deze condoom, je zult hem nodig hebben ;-)", "Fix eerst die bloem maar eens, dan praten we verder", "Veel succes op je date broer, d'r insta looks boem spang,", " net zoals team boem spang, maar dan minder spang."}, "Fix mij een flower!");
+		person = new Person("src/main/java/nl/han/ica/TheDoorMaze/media/objects/G001.png", "Persoon1", this, new String[]{"Yo man, ik heb binnenkort een date zou je voor mij een bloem willen fixen?", "Thx man! neem deze condoom, je zult hem nodig hebben ;-)", "Fix eerst die bloem maar eens, dan praten we verder", "Veel succes op je date broer, d'r insta looks boem spang,", " net zoals team boem spang, maar dan minder spang."}, "Fix mij een flower!");
 		addGameObject(person, 400, 200);
 		
 		computer = new Computer(this, "Barry's files");

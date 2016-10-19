@@ -8,23 +8,29 @@ import processing.core.PGraphics;
 
 public class Inventory extends GameObject {
 	private ArrayList<Item> items = new ArrayList<Item>();
+	private ArrayList<Item> InvisibleItems = new ArrayList<Item>();
 	private boolean isOpen;
 	private final TheDoorMaze world;
 	private Dashboard dashboard;
 	private float dashboardX, dashboardY, dashboardWidth, dashboardHeight;
 	private ArrayList<Mission> missies = new ArrayList<Mission>();
 
-	public Inventory(TheDoorMaze world) {
+	public Inventory(TheDoorMaze world, int width, int height) {
 		this.world = world;
 		this.isOpen = false;
-		this.dashboardX = (world.getWidth() / 3) / 2;
-		this.dashboardY = (world.getHeight() / 3) / 2;
-		this.dashboardWidth = (world.getWidth() / 3) * 2;
-		this.dashboardHeight = (world.getHeight() / 3) * 2;
+		this.dashboardX = (width / 3) / 2;
+		this.dashboardY = (height / 3) / 2;
+		this.dashboardWidth = (width / 3) * 2;
+		this.dashboardHeight = (height / 3) * 2;
 	}
 
 	public void addItem(String name) {
 		this.items.add(new Item(name));
+		this.InvisibleItems.add(new Item(name));
+	}
+	
+	public void addItemInvis(String name){
+		this.InvisibleItems.add(new Item(name));
 	}
 	
 	public String getItem(String itemName){
@@ -42,6 +48,15 @@ public class Inventory extends GameObject {
 				items.remove(i);
 			}
 		}
+	}
+	
+	public boolean getItemBoolean(String itemName){
+		for (Item b : items) {
+			if (b.getName() == itemName){
+		    return true;
+			}
+		}
+		return false;
 	}
 	public boolean getIsOpen() {
 		return this.isOpen;
