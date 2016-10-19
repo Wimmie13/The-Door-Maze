@@ -20,7 +20,7 @@ import processing.core.PApplet;
 public class TheDoorMaze extends GameEngine {
 
 	private Player player;
-	
+	private Door bathroomdoor;
 	public static void main(String[] args) {
 		PApplet.main(new String[]{"nl.han.ica.TheDoorMaze.TheDoorMaze"});
 
@@ -46,11 +46,11 @@ public class TheDoorMaze extends GameEngine {
 	}
 	
 	private void createObjects() {
+        bathroomdoor = new Door(this,"src/main/java/nl/han/ica/TheDoorMaze/media/Toilet.png",1);
+        addGameObject(bathroomdoor, 700,130);
         player = new Player(this);
-        addGameObject(player, 300, 200);
-        Door bathroomdoor=new Door(this,"src/main/java/nl/han/ica/TheDoorMaze/media/Toilet.png" );
-        addGameObject(bathroomdoor, 700,200);
-    }
+        addGameObject(player, 600, 200);
+	}
 		
 
     @Override

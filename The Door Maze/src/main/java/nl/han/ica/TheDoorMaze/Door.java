@@ -9,41 +9,47 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
+import nl.han.ica.OOPDProcessingEngineHAN.UserInput.IKeyInput;
 import nl.han.ica.waterworld.tiles.BoardsTile2;
 import processing.core.PGraphics;
 import processing.core.PVector;
 
 import java.util.List;
 
-public class Door extends SpriteObject implements ICollidableWithGameObjects, ICollidableWithTiles {
-		private TheDoorMaze world;
-		
-	    public Door(TheDoorMaze world, String img) {
-	    	this(new Sprite(img));
+public class Door extends SpriteObject implements ICollidableWithGameObjects {
+	private int naar;
+	private TheDoorMaze world;
+	
+	    public Door(TheDoorMaze world, String img, int naar) {
+	    	super(new Sprite("src/main/java/nl/han/ica/TheDoorMaze/media/Toilet.png"));
+	    	this.naar = naar;
 	    	this.world = world;
-	    }
-	    
-	    private Door(Sprite sprite) {
-	        super(sprite);
-	    }
-	    
-	    @Override
-	    public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-
 	    }
 
 		@Override
-		public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
+		public void update() {
 			// TODO Auto-generated method stub
 			
 		}
 
-		@Override
-		public void update() {
-			
+		public int getNaar() {
+			return naar;
 		}
 
-		@Override
-		public void draw(PGraphics g) {
-		}
-}
+		public void keyPressed(int keyCode, char key) {
+	    }
+		
+		
+	    @Override
+	    public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
+	        for (GameObject g:collidedGameObjects) {
+	            if (g instanceof Player) {
+	    	        if (world.keyCode == UP) {
+	    	            System.out.println("fakka");
+	    	        }
+	            	
+	            	}
+	            }
+	        }
+	    }
+
