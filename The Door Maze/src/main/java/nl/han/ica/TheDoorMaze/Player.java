@@ -59,6 +59,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 				startAlarm("Walk right");
 			}
 		}
+		if (key == ' ') {
+			System.out.println("Spatie!");
+		}
 	}
 
 	private void startAlarm(String alarmName) {
