@@ -12,6 +12,7 @@ public class Inventory extends GameObject {
 	private final TheDoorMaze world;
 	private Dashboard dashboard;
 	private float dashboardX, dashboardY, dashboardWidth, dashboardHeight;
+	private ArrayList<Mission> missies = new ArrayList<Mission>();
 
 	public Inventory(TheDoorMaze world) {
 		this.world = world;
@@ -50,17 +51,24 @@ public class Inventory extends GameObject {
 
 	@Override
 	public void draw(PGraphics g) {
-		final int marginTop = 20;
+		final int marginTop = 25;
 		final int marginText = 20;
-		g.fill(200);
+		g.stroke(255);
+		g.strokeWeight(10);
+		g.fill(0);
 		g.rect(0, 0, this.dashboardWidth, this.dashboardHeight, 5);
+		g.noStroke();
 		g.textSize(20);
 		g.fill(255, 0, 0);
 		g.text("Quest items", 10, marginTop);
-		g.fill(0);
+		g.text("Actieve missie's", 300, marginTop);
+		g.fill(255);
 		g.textSize(16);
 		for(int i = 0; i < items.size(); i++){
 			g.text(items.get(i).getName(), 10, marginTop + marginText * (i + 1));
+		}
+		for(int i = 0; i < missies.size(); i++){
+			g.text(missies.get(i).getMission(), 300, marginTop + marginText * (i + 1));
 		}
 	}
 
@@ -74,5 +82,9 @@ public class Inventory extends GameObject {
 	
 	public void removeDashboard(){
 		world.deleteDashboard(dashboard);
+	}
+	
+	public void addMission(String name) {
+		this.missies.add(new Mission(name));
 	}
 }

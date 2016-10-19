@@ -59,7 +59,10 @@ public class TheDoorMaze extends GameEngine {
 		addGameObject(bathroomdoor, 700, 130);
 		locker = new Locker(this, "Key #45");
 		addGameObject(locker, 200,200);
-//		computer = new Computer(this, "Barry's files");
+		Person person = new Person("src/main/java/nl/han/ica/TheDoorMaze/media/objects/G001.png", "Persoon", this, new String[]{"hoi", "ik"}, "Fix mij een Pizza!");
+		addGameObject(person, 400, 200);
+		
+		//		computer = new Computer(this, "Barry's files");
 //		addGameObject(computer, 400, 200);
 		waterfountain = new Waterfountain(this, "Bier");
 		addGameObject(waterfountain, 1000, 218);
