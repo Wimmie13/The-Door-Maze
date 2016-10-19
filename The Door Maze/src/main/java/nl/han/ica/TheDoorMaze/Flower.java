@@ -15,18 +15,13 @@ import processing.core.PVector;
 
 import java.util.List;
 
-public class Door extends ActionObject implements ICollidableWithGameObjects {
-	private int naar;
+public class Flower extends ActionObject implements ICollidableWithGameObjects {
+	private boolean empty = false;
 	private TheDoorMaze world;
 
-	public Door(TheDoorMaze world, String img, int naar, String itemName) {
-		super(img, itemName);
-		this.naar = naar;
+	public Flower(TheDoorMaze world, String itemName) {
+		super("src/main/java/nl/han/ica/TheDoorMaze/media/plant2.png", itemName);
 		this.world = world;
-	}
-
-	public int getNaar() {
-		return naar;
 	}
 
 	public void keyPressed(int keyCode, char key) {
@@ -36,9 +31,10 @@ public class Door extends ActionObject implements ICollidableWithGameObjects {
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
-				if (world.keyCode == world.UP) {
-					world.keyCode = 0;
-					System.out.println("fakka");
+				if (world.key == ' ' && this.empty == false) {
+					this.empty = true;
+					System.out.println("SKURT");
+					this.setSprite(new Sprite("src/main/java/nl/han/ica/TheDoorMaze/media/plant2empty.png"));
 				}
 
 			}

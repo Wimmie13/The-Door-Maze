@@ -21,40 +21,43 @@ public class TheDoorMaze extends GameEngine {
 
 	private Player player;
 	private Door bathroomdoor;
+	private Flower flower;
+
 	public static void main(String[] args) {
-		PApplet.main(new String[]{"nl.han.ica.TheDoorMaze.TheDoorMaze"});
+		PApplet.main(new String[] { "nl.han.ica.TheDoorMaze.TheDoorMaze" });
 
 	}
-	
+
 	@Override
-    public void setupGame() {
-        int worldWidth=1455;
-        int worldHeight=480;
+	public void setupGame() {
+		int worldWidth = 1455;
+		int worldHeight = 480;
 
-        createObjects();
+		createObjects();
 
-        createViewWithViewport(worldWidth, worldHeight, 848, 480);
-    }
-	
-	private void createViewWithViewport(int worldWidth,int worldHeight,int screenWidth,int screenHeight) {
-		EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, screenWidth, screenHeight,0,80);
-        viewPort.setTolerance(0, 0, 100, 100);
-        View view = new View(viewPort, worldWidth,worldHeight);
-        setView(view);
-        size(screenWidth, screenHeight);
-        view.setBackground(loadImage("src/main/java/nl/han/ica/TheDoorMaze/media/background.fw.png"));
+		createViewWithViewport(worldWidth, worldHeight, 848, 480);
 	}
-	
+
+	private void createViewWithViewport(int worldWidth, int worldHeight, int screenWidth, int screenHeight) {
+		EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, screenWidth, screenHeight, 0, 80);
+		viewPort.setTolerance(0, 0, 100, 100);
+		View view = new View(viewPort, worldWidth, worldHeight);
+		setView(view);
+		size(screenWidth, screenHeight);
+		view.setBackground(loadImage("src/main/java/nl/han/ica/TheDoorMaze/media/background.fw.png"));
+	}
+
 	private void createObjects() {
-        bathroomdoor = new Door(this,"src/main/java/nl/han/ica/TheDoorMaze/media/Toilet.png",1);
-        addGameObject(bathroomdoor, 700,130);
-        player = new Player(this);
-        addGameObject(player, 600, 200);
+		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/Toilet.png", 1, "BathRoom");
+		addGameObject(bathroomdoor, 700, 130);
+		flower = new Flower(this, "Flower");
+		addGameObject(flower, 900, 200);
+		player = new Player(this);
+		addGameObject(player, 600, 200);
 	}
-		
 
-    @Override
-    public void update() {
-    }
+	@Override
+	public void update() {
+	}
 
 }

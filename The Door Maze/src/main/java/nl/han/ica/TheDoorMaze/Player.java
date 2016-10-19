@@ -18,82 +18,81 @@ import java.util.Random;
 
 public class Player extends AnimatedSpriteObject implements ICollidableWithGameObjects, IAlarmListener {
 
-    final int height = 240;
-    final int width = 100;
-    private final TheDoorMaze world;
-    
+	final int height = 240;
+	final int width = 100;
+	private final TheDoorMaze world;
 
-    public Player(TheDoorMaze world) {
-        super(new Sprite("src/main/java/nl/han/ica/TheDoorMaze/media/player.png"),16);
-        this.world=world;
-//        setFriction(0.05f);
-    }
-
-    @Override
-    public void update() {
-        if (this.getX()<=0) {
-            this.setxSpeed(0);
-            this.setX(0);
-        }
-        if (this.getX()>=world.getView().getWorldWidth() - this.width) {
-            this.setxSpeed(0);
-            this.setX(world.getView().getWorldWidth() - this.width);
-        }
-    }
+	public Player(TheDoorMaze world) {
+		super(new Sprite("src/main/java/nl/han/ica/TheDoorMaze/media/player.png"), 16);
+		this.world = world;
+		// setFriction(0.05f);
+	}
 
 	@Override
-    public void keyPressed(int keyCode, char key) {
-        final int speed = 5;
-        if (keyCode == world.LEFT) {
-        	Alarm playSprite = new Alarm("Walk left", 0.1);
-        	playSprite.addTarget(this);
-        	playSprite.start();
-            setDirectionSpeed(270, speed);
-            
-        }
-        if (keyCode == world.RIGHT) {
-            setDirectionSpeed(90, speed);
-            if(this.getCurrentFrameIndex() < 7){
-            	this.nextFrame();
-            } else {
-            	this.setCurrentFrameIndex(0);
-            }
-        }
-        if (key == ' ') {
-            System.out.println("Spatie!");
-        }
-    }
-	
+	public void update() {
+		if (this.getX() <= 0) {
+			this.setxSpeed(0);
+			this.setX(0);
+		}
+		if (this.getX() >= world.getView().getWorldWidth() - this.width) {
+			this.setxSpeed(0);
+			this.setX(world.getView().getWorldWidth() - this.width);
+		}
+	}
+
 	@Override
-	public void keyReleased(int keyCode, char key){
+	public void keyPressed(int keyCode, char key) {
+		final int speed = 5;
+		if (keyCode == world.LEFT) {
+			Alarm playSprite = new Alarm("Walk left", 0.1);
+			playSprite.addTarget(this);
+			playSprite.start();
+			setDirectionSpeed(270, speed);
+
+		}
+		if (keyCode == world.RIGHT) {
+			setDirectionSpeed(90, speed);
+			if (this.getCurrentFrameIndex() < 7) {
+				this.nextFrame();
+			} else {
+				this.setCurrentFrameIndex(0);
+			}
+		}
+		if (key == ' ') {
+			System.out.println("Spatie!");
+		}
+	}
+
+	@Override
+	public void keyReleased(int keyCode, char key) {
 
 		final int speed = 0;
 		setSpeed(speed);
 
-        if (this.getDirection() == 270){
-        	this.setCurrentFrameIndex(8);
-        } else {
-        	this.setCurrentFrameIndex(0);
-        }
+		if (this.getDirection() == 270) {
+			this.setCurrentFrameIndex(8);
+		} else {
+			this.setCurrentFrameIndex(0);
+		}
 	}
-    
-    @Override
-    public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-//        for (GameObject g:collidedGameObjects) {
-//            if (g instanceof Door) {
-//            	Door c = (Door)g;
-//            	System.out.println("dit is een deur");
-//            }
-//        }
-    }
+
+	@Override
+	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
+		// for (GameObject g:collidedGameObjects) {
+		// if (g instanceof Door) {
+		// Door c = (Door)g;
+		// System.out.println("dit is een deur");
+		// }
+		// }
+	}
 
 	@Override
 	public void triggerAlarm(String alarmName) {
-		if(this.getCurrentFrameIndex() < 15 && this.getCurrentFrameIndex() >= 9){
-        	this.nextFrame();
-        	System.out.println("BIER");
-        } else {
-        	this.setCurrentFrameIndex(9);
-        }
+		if (this.getCurrentFrameIndex() < 15 && this.getCurrentFrameIndex() >= 9) {
+			this.nextFrame();
+			System.out.println("BIER");
+		} else {
+			this.setCurrentFrameIndex(9);
+		}
 	}
 }
