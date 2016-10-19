@@ -50,12 +50,14 @@ public class TheDoorMaze extends GameEngine {
 	}
 
 	private void createObjects() {
-		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", 1, "BathRoom");
+		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "1", "BathRoom");
 		addGameObject(bathroomdoor, 700, 130);
 		waterfountain = new Waterfountain(this, "Bier");
 		addGameObject(waterfountain, 1000, 218);
 		flower = new Flower(this, "Flower");
 		addGameObject(flower, 900, 200);
+		Key sleutel = new Key(this, "1");
+		addGameObject(sleutel, 1300, 250);
 		player = new Player(this);
 		addGameObject(player, 600, 200);
 	}
