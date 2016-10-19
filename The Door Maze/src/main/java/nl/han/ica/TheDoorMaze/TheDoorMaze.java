@@ -49,7 +49,7 @@ public class TheDoorMaze extends GameEngine {
 	private void createObjects() {
 		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "2", "BathRoom", true);
 		addGameObject(bathroomdoor, 700, 130);
-		locker = new Locker(this, "Key #45");
+		locker = new Locker(this, "Key #45", "1234");
 		addGameObject(locker, 50, 200);
 		person = new Person("src/main/java/nl/han/ica/TheDoorMaze/media/objects/G001.png", "Persoon", this, new String[]{"Yo man, ik heb binnenkort een date zou je voor mij een bloem willen fixen?", "Thx man! neem deze condoom, je zult hem nodig hebben ;-)", "Fix eerst die bloem maar eens, dan praten we verder", "Veel succes op je date broer, d'r insta looks boem spang,", " net zoals team boem spang, maar dan minder spang."}, "Fix mij een flower!");
 		addGameObject(person, 400, 200);
@@ -89,7 +89,7 @@ public class TheDoorMaze extends GameEngine {
     	this.deleteAllDashboards();
 		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "2", "BathRoom", true);
 		addGameObject(bathroomdoor, 700, 130);
-		locker = new Locker(this, "Key #45");
+		locker = new Locker(this, "Key #45", "1234");
 		addGameObject(locker, 50, 200);
 		person = new Person("src/main/java/nl/han/ica/TheDoorMaze/media/objects/G001.png", "Persoon", this, new String[]{"Yo man, ik heb binnenkort een date zou je voor mij een bloem willen fixen?", "Thx man! neem deze condoom, je zult hem nodig hebben ;-)", "Fix eerst die bloem maar eens, dan praten we verder", "Veel succes op je date broer, d'r insta looks boem spang,", " net zoals team boem spang, maar dan minder spang."}, "Fix mij een flower!");
 		addGameObject(person, 400, 200);

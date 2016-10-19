@@ -12,6 +12,8 @@ public class MessageBox extends GameObject{
 	private Dashboard dashboardAction;
 	private float dashboardX, dashboardY, dashboardWidth, dashboardHeight;
 	private String[] text;
+	private String input;
+	private String closeMessage;
 	
 	public MessageBox(){
 		
@@ -24,6 +26,7 @@ public class MessageBox extends GameObject{
 		this.dashboardX = (world.getWidth() / 3) / 2;
 		this.dashboardY = world.getHeight() - this.dashboardHeight;
 		this.text = new String[]{NPCname, line1, line2};
+		this.closeMessage = "Druk op enter om te sluiten";
 		createDashboard();
 	}
 	
@@ -34,6 +37,7 @@ public class MessageBox extends GameObject{
 		this.dashboardX = (world.getWidth() / 3) / 2;
 		this.dashboardY = world.getHeight() - this.dashboardHeight;
 		this.text = new String[]{NPCname, line1, line2, line3};
+		this.closeMessage = "Druk op enter om te sluiten";
 		createDashboard();
 	}
 
@@ -59,8 +63,9 @@ public class MessageBox extends GameObject{
 		for(int i = 1; i < text.length; i++){
 			g.text(text[i], marginLeft, marginTop + marginText * i);
 		}
+		g.text("Invoer: " + this.input, marginLeft, marginTop + marginText * (text.length + 1));
 		g.textAlign(RIGHT);
-		g.text("Druk op enter om te sluiten", this.dashboardWidth - marginRight, this.dashboardHeight - marginTop);
+		g.text(this.closeMessage, this.dashboardWidth - marginRight, this.dashboardHeight - marginTop);
 	}
 	
 	private void createDashboard() {
@@ -77,6 +82,18 @@ public class MessageBox extends GameObject{
 	
 	public boolean getIsShown() {
 		return this.isShown;
+	}
+	
+	public void addInput(String input){
+		
+	}
+	
+	public String getInput(){
+		return input;
+	}
+	
+	public void hasInput(){
+		this.closeMessage = "Druk op enter om door te gaan.";
 	}
 
 }
