@@ -44,7 +44,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
 	@Override
 	public void keyPressed(int keyCode, char key) {
-		if (world.inventory.getIsOpen() == false) {
+		if (world.inventory.getIsOpen() == false || world.person.getIsOpen() == false) {
 			final int speed = 5;
 			if (keyCode == world.LEFT) {
 				if (this.alarmOn == false) {
@@ -63,12 +63,15 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 			if (key == 'i') {
 				world.inventory.setIsOpen();
 				world.inventory.createDashboard();
-				this.setSpeed(0);
 			}
 		} else{
 			if (key == 'i') {
 				world.inventory.setIsOpen();
 				world.inventory.removeDashboard();
+			}
+			if (key == ' '){
+				world.person.setIsOpen();
+				world.person.removeDashboard();
 			}
 		}
 	}

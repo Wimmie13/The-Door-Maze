@@ -3,7 +3,9 @@ package nl.han.ica.TheDoorMaze;
 import java.util.List;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
+import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
+import processing.core.PGraphics;
 
 public class Person extends ActionObject implements ICollidableWithGameObjects {
 	private TheDoorMaze world;
@@ -13,7 +15,7 @@ public class Person extends ActionObject implements ICollidableWithGameObjects {
 	
 	
 	public Person(String img, String itemName, TheDoorMaze world, String[] text, String missionObjective) {
-		super(img, itemName);
+		super(img, itemName, world);
 		this.world = world;
 		this.text = text;
 		this.missionObjective = missionObjective;
@@ -27,10 +29,11 @@ public class Person extends ActionObject implements ICollidableWithGameObjects {
 					TheDoorMaze.inventory.addMission(this.missionObjective);
 					System.out.println("at");
 					this.isUsed = true;
+					this.createDashboard();
+					this.setIsOpen();
 				}
 
 			}
 		}
 	}
-	
 }
