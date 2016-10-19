@@ -30,7 +30,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 	public void update() {
 		if (this.getX() <= 0 + 100) {
 			this.setxSpeed(0);
-			this.setX(0+100);
+			this.setX(0 + 100);
 		}
 		if (this.getX() >= world.getView().getWorldWidth() - this.width - 100) {
 			this.setxSpeed(0);
@@ -55,21 +55,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 					setDirectionSpeed(90, speed);
 					startAlarm("Walk right");
 				}
-			}
-			if (key == 'i') {
-				this.setWalkAllowed();
-				world.inventory.setIsOpen();
-				world.inventory.createDashboard();
-				this.setSpeed(0);
-				if (this.alarmOn == true) {
-					startAlarm("STOP");
-				}
-			}
-		} else{
-			if (key == 'i') {
-				this.setWalkAllowed();
-				world.inventory.setIsOpen();
-				world.inventory.removeDashboard();
 			}
 		}
 	}
@@ -98,6 +83,19 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 			if (this.alarmOn == true) {
 				startAlarm("STOP");
 			}
+		}
+		if (key == 'i' && world.inventory.getIsOpen() == false) {
+			this.setWalkAllowed();
+			world.inventory.setIsOpen();
+			world.inventory.createDashboard();
+			this.setSpeed(0);
+			if (this.alarmOn == true) {
+				startAlarm("STOP");
+			}
+		} else if (key == 'i') {
+			this.setWalkAllowed();
+			world.inventory.setIsOpen();
+			world.inventory.removeDashboard();
 		}
 	}
 
@@ -140,8 +138,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 		}
 		this.startAlarm("Walk right");
 	}
-	
-	public void setWalkAllowed(){
+
+	public void setWalkAllowed() {
 		this.walkAllowed = !this.walkAllowed;
 	}
 }

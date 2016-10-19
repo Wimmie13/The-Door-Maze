@@ -20,6 +20,7 @@ public class Person extends ActionObject implements ICollidableWithGameObjects {
 		this.text = text;
 		this.missionObjective = missionObjective;
 		this.missionComplete = new Sound(world, "src/main/java/nl/han/ica/TheDoorMaze/media/music/missionComplete.mp3");
+		this.message = new MessageBox();
 	}
 	
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {

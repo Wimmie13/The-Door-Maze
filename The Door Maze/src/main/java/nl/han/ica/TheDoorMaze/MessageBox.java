@@ -13,6 +13,10 @@ public class MessageBox extends GameObject{
 	private float dashboardX, dashboardY, dashboardWidth, dashboardHeight;
 	private String[] text;
 	
+	public MessageBox(){
+		
+	}
+	
 	public MessageBox(TheDoorMaze world, String NPCname, String line1, String line2){
 		this.world = world;
 		this.dashboardWidth = (world.getWidth() / 3) * 2;
