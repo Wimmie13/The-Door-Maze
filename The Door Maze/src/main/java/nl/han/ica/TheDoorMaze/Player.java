@@ -32,19 +32,19 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
 	@Override
 	public void update() {
-		if (this.getX() <= 0) {
+		if (this.getX() <= 0 + 100) {
 			this.setxSpeed(0);
-			this.setX(0);
+			this.setX(0+100);
 		}
-		if (this.getX() >= world.getView().getWorldWidth() - this.width) {
+		if (this.getX() >= world.getView().getWorldWidth() - this.width - 100) {
 			this.setxSpeed(0);
-			this.setX(world.getView().getWorldWidth() - this.width);
+			this.setX(world.getView().getWorldWidth() - this.width - 100);
 		}
 	}
 
 	@Override
 	public void keyPressed(int keyCode, char key) {
-		if (world.inventory.getIsOpen() == false || world.person.getIsOpen() == false) {
+		if (world.inventory.getIsOpen() == false) {
 			final int speed = 5;
 			if (keyCode == world.LEFT) {
 				if (this.alarmOn == false) {
@@ -68,10 +68,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 			if (key == 'i') {
 				world.inventory.setIsOpen();
 				world.inventory.removeDashboard();
-			}
-			if (key == ' '){
-				world.person.setIsOpen();
-				world.person.removeDashboard();
 			}
 		}
 	}

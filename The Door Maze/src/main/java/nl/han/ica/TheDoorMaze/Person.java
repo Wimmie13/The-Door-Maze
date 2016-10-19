@@ -29,11 +29,10 @@ public class Person extends ActionObject implements ICollidableWithGameObjects {
 					TheDoorMaze.inventory.addMission(this.missionObjective);
 					System.out.println("at");
 					this.isUsed = true;
-					this.createDashboard();
-					this.setIsOpen();
 				}
 
 			}
 		}
 	}
+	
 }
