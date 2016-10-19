@@ -14,7 +14,8 @@ public class TileMap {
     private int tileSize;
     private int[][] indexMap;
     private Tile[][] tileMap;
-    private TileType[] tileTypes;
+    @SuppressWarnings("rawtypes")
+	private TileType[] tileTypes;
     private Sprite emptySprite = new Sprite(new PImage(0, 0));
     private TileType<EmptyTile> emptyTileTileType = new TileType<>(EmptyTile.class, emptySprite);
 
@@ -24,7 +25,8 @@ public class TileMap {
      * @param tileTypes The Array with factory's which will be creating the different types of tiles.
      * @param indexMap The Map consisting of tileType indexes which will be used to create and draw the Map.
      */
-    public TileMap(int tileSize, TileType[] tileTypes, int[][] indexMap) {
+    @SuppressWarnings("rawtypes")
+	public TileMap(int tileSize, TileType[] tileTypes, int[][] indexMap) {
         this.tileSize = tileSize;
         setTileTypes(tileTypes);
         setTileMap(indexMap);
@@ -173,7 +175,8 @@ public class TileMap {
      * Sets the TileTypes of the TileMap and adjusts the current map to the new Types
      * @param tileTypes The Array which contains the tileTypes of the tileMap
      */
-    public void setTileTypes(TileType[] tileTypes) {
+    @SuppressWarnings("rawtypes")
+	public void setTileTypes(TileType[] tileTypes) {
         this.tileTypes = tileTypes;
         createTileMap();
     }
@@ -182,7 +185,8 @@ public class TileMap {
      * Gets the TileTypes inside the TileMap.
      * @return The Array which contains the tileTypes of the tileMap
      */
-    public TileType[] getTileTypes() {
+    @SuppressWarnings("rawtypes")
+	public TileType[] getTileTypes() {
         return tileTypes;
     }
 

@@ -16,6 +16,7 @@ public class Flower extends ActionObject implements ICollidableWithGameObjects {
 		this.world = world;
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {

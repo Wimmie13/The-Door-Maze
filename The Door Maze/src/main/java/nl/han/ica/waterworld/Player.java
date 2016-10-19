@@ -8,6 +8,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.waterworld.tiles.BoardsTile;
+import processing.core.PConstants;
 import processing.core.PVector;
 
 import java.util.List;
@@ -56,18 +57,18 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
     @Override
     public void keyPressed(int keyCode, char key) {
         final int speed = 5;
-        if (keyCode == world.LEFT) {
+        if (keyCode == PConstants.LEFT) {
             setDirectionSpeed(270, speed);
             setCurrentFrameIndex(0);
         }
-        if (keyCode == world.UP) {
+        if (keyCode == PConstants.UP) {
             setDirectionSpeed(0, speed);
         }
-        if (keyCode == world.RIGHT) {
+        if (keyCode == PConstants.RIGHT) {
             setDirectionSpeed(90, speed);
             setCurrentFrameIndex(1);
         }
-        if (keyCode == world.DOWN) {
+        if (keyCode == PConstants.DOWN) {
             setDirectionSpeed(180, speed);
         }
         if (key == ' ') {
@@ -76,7 +77,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
     }
 
 
-    @Override
+    @SuppressWarnings("static-access")
+	@Override
     public void tileCollisionOccurred(List<CollidedTile> collidedTiles)  {
         PVector vector;
 

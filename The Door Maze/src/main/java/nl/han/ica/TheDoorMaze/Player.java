@@ -2,20 +2,14 @@ package nl.han.ica.TheDoorMaze;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
-import nl.han.ica.OOPDProcessingEngineHAN.Collision.CollidedTile;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
-import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithTiles;
-import nl.han.ica.OOPDProcessingEngineHAN.Exceptions.TileNotFoundException;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
-import nl.han.ica.OOPDProcessingEngineHAN.View.View;
-import processing.core.PVector;
 
 import java.util.List;
-import java.util.Random;
 
+@SuppressWarnings("static-access")
 public class Player extends AnimatedSpriteObject implements ICollidableWithGameObjects, IAlarmListener {
 
 	final int height = 240;

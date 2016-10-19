@@ -23,7 +23,7 @@ public class Waterfountain extends ActionObject implements ICollidableWithGameOb
 				if (world.key == ' ' && this.isUsed == false) {
 					this.isUsed = true;
 					this.setSprite(new Sprite(emptyImage));
-					world.inventory.addItem(this.itemName);
+					TheDoorMaze.inventory.addItem(this.itemName);
 				}
 
 			}

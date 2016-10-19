@@ -1,19 +1,10 @@
 package nl.han.ica.TheDoorMaze;
 
-import com.sun.prism.image.ViewPort;
-import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
-import nl.han.ica.OOPDProcessingEngineHAN.Persistence.IPersistence;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
-import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
-import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
-import nl.han.ica.OOPDProcessingEngineHAN.View.CenterFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.TheDoorMaze.Player;
-import nl.han.ica.waterworld.Swordfish;
 import processing.core.PApplet;
 
 @SuppressWarnings("serial")
@@ -58,8 +49,8 @@ public class TheDoorMaze extends GameEngine {
 	private void createObjects() {
 		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "1", "BathRoom");
 		addGameObject(bathroomdoor, 700, 130);
-//		locker = new Locker(this, "Key #45");
-//		addGameObject(locker, 200,200);
+		locker = new Locker(this, "Key #45");
+		addGameObject(locker, 50, 200);
 		person = new Person("src/main/java/nl/han/ica/TheDoorMaze/media/objects/G001.png", "Persoon", this, new String[]{"hoi", "ik"}, "Fix mij een flower!");
 		addGameObject(person, 400, 200);
 		

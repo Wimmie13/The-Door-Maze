@@ -8,6 +8,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 
 public class Person extends ActionObject implements ICollidableWithGameObjects {
 	private TheDoorMaze world;
+	@SuppressWarnings("unused")
 	private String[] text;
 	private boolean missionActive = false;
 	private String missionObjective;
@@ -36,7 +37,7 @@ public class Person extends ActionObject implements ICollidableWithGameObjects {
 					TheDoorMaze.inventory.delMission(this.missionObjective);
 					missionComplete.play();
 					this.missionActive = false;
-				} else if (world.key == world.ENTER && message.getIsShown() == true){
+				} else if (world.key == TheDoorMaze.ENTER && message.getIsShown() == true){
 					message.removeDashboard();
 					((Player) g).setWalkAllowed();
 				}

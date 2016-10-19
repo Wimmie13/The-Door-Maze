@@ -4,6 +4,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import processing.core.PGraphics;
 
+@SuppressWarnings("static-access")
 public class MessageBox extends GameObject{
 
 	TheDoorMaze world;

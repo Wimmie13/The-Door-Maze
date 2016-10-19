@@ -25,6 +25,7 @@ import java.util.Vector;
  * 
  * This engine is created by: Bram Heijmink, Jeffrey Haen, Joost Elshof, Kenny Ligthart, Mark Vaesen & Nico Smolders.
  */
+@SuppressWarnings("serial")
 public abstract class GameEngine extends PApplet {
 
     /**
@@ -264,7 +265,8 @@ public abstract class GameEngine extends PApplet {
      * 
      * This method is called by the GameThread.
      */
-    public void updateGame() {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	public void updateGame() {
     	
         updateGameObjects();
         updateDashboards();
@@ -456,7 +458,8 @@ public abstract class GameEngine extends PApplet {
      * (non-Javadoc)
      * @see processing.core.PApplet#mouseWheel(processing.event.MouseEvent)
      */
-    public void mouseWheel(MouseEvent event) {
+    @SuppressWarnings("deprecation")
+	public void mouseWheel(MouseEvent event) {
     	
     	for (int i = 0; i < gameObjects.size(); i++) {
 
@@ -573,7 +576,8 @@ public abstract class GameEngine extends PApplet {
          * @param allGameObjects
          * @return Vector<GameObject>
          */
-        private static Vector<GameObject> calculateGameObjectCollisions(GameObject gameObject, Vector<GameObject> allGameObjects) {
+        @SuppressWarnings("unchecked")
+		private static Vector<GameObject> calculateGameObjectCollisions(GameObject gameObject, Vector<GameObject> allGameObjects) {
             Vector<GameObject> collidedObjects = new Vector<>();
 
             Rectangle gameObjectRectangle = new Rectangle((int)gameObject.getX(), (int)gameObject.getY(),
@@ -601,7 +605,8 @@ public abstract class GameEngine extends PApplet {
          * @param gameObject, allGameObjects
          * @return Vector<GameObject>
          */
-        private static Vector<CollidedTile> calculateTileCollision(GameObject gameObject, TileMap tileMap) {
+        @SuppressWarnings("unchecked")
+		private static Vector<CollidedTile> calculateTileCollision(GameObject gameObject, TileMap tileMap) {
             Vector<CollidedTile> collidedTiles = new Vector<>();
 
             Rectangle gameObjectRectangle = new Rectangle((int)gameObject.getX(), (int)gameObject.getY(),
@@ -777,7 +782,8 @@ public abstract class GameEngine extends PApplet {
          * @param collidingGameobject
          * @return Vector
          */
-        private static Vector checkCollisionBetweenTileAndObject(GameObject gameObject, Tile tile, Rectangle collidingTile, Rectangle collidingGameobject) {
+        @SuppressWarnings({ "rawtypes", "unchecked", "unused" })
+		private static Vector checkCollisionBetweenTileAndObject(GameObject gameObject, Tile tile, Rectangle collidingTile, Rectangle collidingGameobject) {
             Vector objects = new Vector();
 
             if (objectIsMoving(gameObject)) {
@@ -813,7 +819,8 @@ public abstract class GameEngine extends PApplet {
          * @param gameObjectRectangle
          * @return Vector
          */
-        private static Vector checkCollisionBetweenObjects(GameObject gameObject, GameObject otherGameObject, Rectangle gameObjectRectangle, Rectangle otherGameObjectRectangle) {
+        @SuppressWarnings({ "rawtypes", "unchecked" })
+		private static Vector checkCollisionBetweenObjects(GameObject gameObject, GameObject otherGameObject, Rectangle gameObjectRectangle, Rectangle otherGameObjectRectangle) {
             Vector objects = new Vector();
 
             if(objectIsMoving(gameObject)) {

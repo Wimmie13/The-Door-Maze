@@ -1,6 +1,5 @@
 package nl.han.ica.waterworld;
 
-import com.sun.prism.image.ViewPort;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
@@ -12,7 +11,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.waterworld.tiles.BoardsTile;
-import nl.han.ica.waterworld.tiles.BoardsTile2;
 import processing.core.PApplet;
 
 /**
@@ -21,10 +19,9 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class WaterWorld extends GameEngine {
 
-    private Sound backgroundSound;
-    private Sound bubblePopSound;
+    @SuppressWarnings("unused")
+	private Sound bubblePopSound;
     private TextObject dashboardText;
-    private BubbleSpawner bubbleSpawner;
     private int bubblesPopped;
     private IPersistence persistence;
     private Player player;
@@ -78,7 +75,8 @@ public class WaterWorld extends GameEngine {
      * @param screenHeight Hoogte van het scherm
      * @param zoomFactor Factor waarmee wordt ingezoomd
      */
-    private void createViewWithViewport(int worldWidth,int worldHeight,int screenWidth,int screenHeight,float zoomFactor) {
+    @SuppressWarnings("unused")
+	private void createViewWithViewport(int worldWidth,int worldHeight,int screenWidth,int screenHeight,float zoomFactor) {
         EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, (int)Math.ceil(screenWidth/zoomFactor),(int)Math.ceil(screenHeight/zoomFactor),0,0);
 //        viewPort.setTolerance(50, 50, 50, 50);
         View view = new View(viewPort, worldWidth,worldHeight);
@@ -113,7 +111,7 @@ public class WaterWorld extends GameEngine {
      * Maakt de spawner voor de bellen aan
      */
     public void createBubbleSpawner() {
-        bubbleSpawner=new BubbleSpawner(this,bubblePopSound,2);
+//        bubbleSpawner=new BubbleSpawner(this,bubblePopSound,2);
     }
 
     /**
@@ -144,13 +142,13 @@ public class WaterWorld extends GameEngine {
     /** 
      * Initialiseert de tilemap
      */
-    private void initializeTileMap() {
+    @SuppressWarnings("rawtypes")
+	private void initializeTileMap() {
         /* TILES */
         Sprite boardsSprite = new Sprite("src/main/java/nl/han/ica/waterworld/media/boards.jpg");
         TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
-        TileType<BoardsTile2> boardTileType2 = new TileType<>(BoardsTile2.class, boardsSprite);
 
-        TileType[] tileTypes = { boardTileType, boardTileType2 };
+        TileType[] tileTypes = { boardTileType };
         int tileSize=50;
         int tilesMap[][]={
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},

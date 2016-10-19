@@ -6,9 +6,8 @@ import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithTiles;
 import nl.han.ica.OOPDProcessingEngineHAN.Exceptions.TileNotFoundException;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
-import nl.han.ica.waterworld.tiles.BoardsTile2;
+import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PGraphics;
-import processing.core.PVector;
 
 import java.util.List;
 
@@ -49,7 +48,8 @@ public class Bubble extends GameObject implements ICollidableWithGameObjects, IC
         }
     }
 
-    @Override
+    @SuppressWarnings("static-access")
+	@Override
     public void draw(PGraphics g) {
         g.ellipseMode(g.CORNER); // Omdat cirkel anders vanuit midden wordt getekend en dat problemen geeft bij collisiondetectie
         g.stroke(0, 50, 200, 100);
@@ -76,10 +76,11 @@ public class Bubble extends GameObject implements ICollidableWithGameObjects, IC
         }
     }
     
-    @Override
+    @SuppressWarnings("static-access")
+	@Override
     public void tileCollisionOccurred(List<CollidedTile> collidedTiles)  {
         for (CollidedTile ct : collidedTiles) {
-            if (ct.theTile instanceof BoardsTile2) {
+            if (ct.theTile instanceof BoardsTile) {
                 if (ct.collisionSide == ct.BOTTOM) {
                     try {
                     	System.out.println("BIER");
