@@ -47,7 +47,7 @@ public class TheDoorMaze extends GameEngine {
 	}
 
 	private void createObjects() {
-		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", 2, "BathRoom", true);
+		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "2", "BathRoom", true);
 		addGameObject(bathroomdoor, 700, 130);
 		locker = new Locker(this, "Key #45");
 		addGameObject(locker, 50, 200);
@@ -87,7 +87,7 @@ public class TheDoorMaze extends GameEngine {
     private void map1(){
     	this.deleteAllGameOBjects();
     	this.deleteAllDashboards();
-		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", 2, "BathRoom", true);
+		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "2", "BathRoom", true);
 		addGameObject(bathroomdoor, 700, 130);
 		locker = new Locker(this, "Key #45");
 		addGameObject(locker, 50, 200);
@@ -120,17 +120,17 @@ public class TheDoorMaze extends GameEngine {
     	this.deleteAllDashboards();
 		computer = new Computer(this, "Barry's files");
 		addGameObject(computer, 600, 200);
-		player = new Player(this);
-		addGameObject(computer, 600, 200);
-		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", 1, "BathRoom", false);
+		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "1", "BathRoom", false);
 		addGameObject(bathroomdoor, 700, 130);
-    	int worldWidth = 2910;
+		player = new Player(this);
+		addGameObject(player, 600, 200);
+    	int worldWidth = 1455;
 		int worldHeight = 480;
-		EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, 840, 480, 0, 80);
+    	EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, 840, 480, 0, 80);
 		viewPort.setTolerance(0, 0, 100, 100);
 		View view = new View(viewPort, worldWidth, worldHeight);
 		setView(view);
-		view.setBackground(loadImage("src/main/java/nl/han/ica/TheDoorMaze/media/background.fw2.png"));
+		view.setBackground(loadImage("src/main/java/nl/han/ica/TheDoorMaze/media/background.fw.png"));
 		this.map = 0;
     }
 
