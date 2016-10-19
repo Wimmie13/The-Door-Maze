@@ -44,9 +44,11 @@ public class MessageBox extends GameObject{
 		final int marginTop = 20;
 		final int marginText = 20;
 		g.textSize(14);
-		g.fill(200);
+		g.fill(0);
+		g.strokeWeight(10);
+		g.fill(0);
 		g.rect(0, 0, this.dashboardWidth, this.dashboardHeight, 5);
-		
+		g.noStroke();
 		g.fill(255, 0, 0);
 		g.text(text[0], marginLeft, marginTop);
 		g.fill(255);
