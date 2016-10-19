@@ -16,7 +16,6 @@ import processing.core.PVector;
 import java.util.List;
 
 public class Flower extends ActionObject implements ICollidableWithGameObjects {
-	private boolean empty = false;
 	private TheDoorMaze world;
 
 	public Flower(TheDoorMaze world, String itemName) {
@@ -31,10 +30,12 @@ public class Flower extends ActionObject implements ICollidableWithGameObjects {
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
-				if (world.key == ' ' && this.empty == false) {
-					this.empty = true;
+				System.out.println(this.inventory.getItem());
+				if (world.key == ' ' && this.isUsed == false) {
+					this.isUsed = true;
 					System.out.println("SKURT");
 					this.setSprite(new Sprite("src/main/java/nl/han/ica/TheDoorMaze/media/plant2empty.png"));
+					this.inventory.addItem(this.itemName);
 				}
 
 			}
