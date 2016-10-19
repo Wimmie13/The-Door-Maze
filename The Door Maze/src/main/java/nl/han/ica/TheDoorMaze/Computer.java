@@ -11,7 +11,6 @@ public class Computer extends ActionObject implements ICollidableWithGameObjects
 	private static String image = "src/main/java/nl/han/ica/TheDoorMaze/media/objects/computerscreen.png";
 	private static String imageHacked = "src/main/java/nl/han/ica/TheDoorMaze/media/objects/computerscreenhacked.png";
 	private boolean hacked;
-
 	public Computer(TheDoorMaze world, String itemName) {
 		super(image, itemName);
 		this.world = world;

@@ -103,4 +103,12 @@ public class Inventory extends GameObject {
 	public void addMission(String name) {
 		this.missies.add(new Mission(name));
 	}
+	
+	public void delMission(String name) {
+		for(int i = 0; i < missies.size(); i++){
+			if (missies.get(i).getMission() == name){
+				missies.remove(i);
+			}
+		}
+	}
 }
