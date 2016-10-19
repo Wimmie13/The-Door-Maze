@@ -18,19 +18,13 @@ import java.util.List;
 public class ActionObject extends SpriteObject {
 	protected String itemName;
 	protected boolean isUsed = false;
-	static protected Inventory inventory;
 
 	public ActionObject(String img, String itemName) {
 		super(new Sprite(img));
 		this.itemName = itemName;
-		this.inventory = new Inventory();
 	}
 
 	@Override
 	public void update() {
-	}
-	
-	public Inventory getInventory(){
-		return this.inventory;
 	}
 }
