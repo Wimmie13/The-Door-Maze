@@ -23,21 +23,26 @@ public class TheDoorMaze extends GameEngine {
 	private Door bathroomdoor;
 	private Flower flower;
 	private Waterfountain waterfountain;
+	private Locker locker;
+	private Computer computer;
+	public static Inventory inventory;
+	
 	private Sound backgroundSound;
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.TheDoorMaze.TheDoorMaze" });
-
 	}
 
 	@Override
 	public void setupGame() {
 		int worldWidth = 1455;
 		int worldHeight = 480;
-
+		
 		createObjects();
         initializeSound();
 		createViewWithViewport(worldWidth, worldHeight, 848, 480);
+		
+		inventory = new Inventory(this);
 	}
 
 	private void createViewWithViewport(int worldWidth, int worldHeight, int screenWidth, int screenHeight) {
@@ -52,6 +57,10 @@ public class TheDoorMaze extends GameEngine {
 	private void createObjects() {
 		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "1", "BathRoom");
 		addGameObject(bathroomdoor, 700, 130);
+		locker = new Locker(this, "Key #45");
+		addGameObject(locker, 200,200);
+//		computer = new Computer(this, "Barry's files");
+//		addGameObject(computer, 400, 200);
 		waterfountain = new Waterfountain(this, "Bier");
 		addGameObject(waterfountain, 1000, 218);
 		flower = new Flower(this, "Flower");

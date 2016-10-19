@@ -44,23 +44,31 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
 	@Override
 	public void keyPressed(int keyCode, char key) {
-		final int speed = 5;
-		if (keyCode == world.LEFT) {
-			if (this.alarmOn == false) {
-				this.alarmOn = true;
-				setDirectionSpeed(270, speed);
-				startAlarm("Walk left");
+		if (world.inventory.getIsOpen() == false) {
+			final int speed = 5;
+			if (keyCode == world.LEFT) {
+				if (this.alarmOn == false) {
+					this.alarmOn = true;
+					setDirectionSpeed(270, speed);
+					startAlarm("Walk left");
+				}
 			}
-		}
-		if (keyCode == world.RIGHT) {
-			if (this.alarmOn == false) {
-				this.alarmOn = true;
-				setDirectionSpeed(90, speed);
-				startAlarm("Walk right");
+			if (keyCode == world.RIGHT) {
+				if (this.alarmOn == false) {
+					this.alarmOn = true;
+					setDirectionSpeed(90, speed);
+					startAlarm("Walk right");
+				}
 			}
-		}
-		if (key == ' ') {
-			System.out.println("Spatie!");
+			if (key == 'i') {
+				world.inventory.setIsOpen();
+				world.inventory.createDashboard();
+			}
+		} else{
+			if (key == 'i') {
+				world.inventory.setIsOpen();
+				world.inventory.removeDashboard();
+			}
 		}
 	}
 
@@ -82,10 +90,12 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
 	@Override
 	public void keyReleased(int keyCode, char key) {
-		final int speed = 0;
-		setSpeed(speed);
-		if (this.alarmOn == true) {
-			startAlarm("STOP");
+		if (world.inventory.getIsOpen() == false) {
+			final int speed = 0;
+			setSpeed(speed);
+			if (this.alarmOn == true) {
+				startAlarm("STOP");
+			}
 		}
 	}
 

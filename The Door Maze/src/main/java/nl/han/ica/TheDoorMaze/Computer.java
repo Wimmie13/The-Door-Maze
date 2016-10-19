@@ -2,31 +2,38 @@ package nl.han.ica.TheDoorMaze;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 import java.util.List;
 
-public class Flower extends ActionObject implements ICollidableWithGameObjects {
+public class Computer extends ActionObject implements ICollidableWithGameObjects {
 	private TheDoorMaze world;
-	private static String image = "src/main/java/nl/han/ica/TheDoorMaze/media/objects/plant2.png";
-	private String emptyImage = "src/main/java/nl/han/ica/TheDoorMaze/media/objects/plant2empty.png";
+	private static String image = "src/main/java/nl/han/ica/TheDoorMaze/media/objects/computer.png";
+	private boolean hacked;
 
-	public Flower(TheDoorMaze world, String itemName) {
+	public Computer(TheDoorMaze world, String itemName) {
 		super(image, itemName);
 		this.world = world;
+		this.hacked = false;
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
-
-				if (world.key == ' ' && this.isUsed == false) {
+				if (world.key == ' ' && this.isUsed == false && this.hacked == true) {
 					this.isUsed = true;
-					this.setSprite(new Sprite(emptyImage));
 					world.inventory.addItem(this.itemName);
 				}
 			}
 		}
+	}
+	
+	public boolean getHacked(){
+		return this.hacked;
+	}
+	
+	public void setHacked(){
+		this.hacked = !this.hacked;
 	}
 }
