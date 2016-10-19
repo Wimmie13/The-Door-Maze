@@ -21,7 +21,6 @@ public class Locker extends ActionObject implements ICollidableWithGameObjects {
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
-				System.out.println(world.inventory.getItem());
 				if (world.key == ' ' && this.isUsed == false && this.open == true) {
 					this.isUsed = true;
 					world.inventory.addItem(this.itemName);

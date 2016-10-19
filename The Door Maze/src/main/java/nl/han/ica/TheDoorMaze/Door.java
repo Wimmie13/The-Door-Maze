@@ -16,17 +16,17 @@ import processing.core.PVector;
 import java.util.List;
 
 public class Door extends ActionObject implements ICollidableWithGameObjects {
-	private int naar;
+	private String naar;
 	private TheDoorMaze world;
 
-	public Door(TheDoorMaze world, String img, int naar, String itemName) {
+	public Door(TheDoorMaze world, String img, String naar, String itemName) {
 		super(img, itemName);
 		this.naar = naar;
 		this.world = world;
 	}
 
-	public int getNaar() {
-		return naar;
+	public String getNaar() {
+		return this.naar;
 	}
 
 	public void keyPressed(int keyCode, char key) {
@@ -36,7 +36,7 @@ public class Door extends ActionObject implements ICollidableWithGameObjects {
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
-				if (world.keyCode == world.UP) {
+				if (world.keyCode == world.UP && this.inventory.getItem(this.naar) == this.naar) {
 					world.keyCode = 0;
 					System.out.println("fakka");
 				}

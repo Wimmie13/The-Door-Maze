@@ -25,12 +25,14 @@ public class Inventory extends GameObject {
 	public void addItem(String name) {
 		this.items.add(new Item(name));
 	}
-
-	public String getItem() {
+	
+	public String getItem(String itemName){
 		for (Item b : items) {
-			return b.getName();
+			if (b.getName() == itemName){
+		    return b.getName();
+			}
 		}
-		return "niks";
+		return "dit item zit niet in je inventory";
 	}
 
 	public boolean getIsOpen() {

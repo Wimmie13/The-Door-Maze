@@ -27,6 +27,7 @@ public class TheDoorMaze extends GameEngine {
 	private Computer computer;
 	public static Inventory inventory;
 	
+	private Sound backgroundSound;
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.TheDoorMaze.TheDoorMaze" });
@@ -38,7 +39,7 @@ public class TheDoorMaze extends GameEngine {
 		int worldHeight = 480;
 		
 		createObjects();
-
+        initializeSound();
 		createViewWithViewport(worldWidth, worldHeight, 848, 480);
 		
 		inventory = new Inventory(this);
@@ -54,7 +55,7 @@ public class TheDoorMaze extends GameEngine {
 	}
 
 	private void createObjects() {
-		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", 1, "BathRoom");
+		bathroomdoor = new Door(this, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "1", "BathRoom");
 		addGameObject(bathroomdoor, 700, 130);
 		locker = new Locker(this, "Key #45");
 		addGameObject(locker, 200,200);
@@ -64,6 +65,8 @@ public class TheDoorMaze extends GameEngine {
 		addGameObject(waterfountain, 1000, 218);
 		flower = new Flower(this, "Flower");
 		addGameObject(flower, 900, 200);
+		Key sleutel = new Key(this, "1");
+		addGameObject(sleutel, 1300, 250);
 		player = new Player(this);
 		addGameObject(player, 600, 200);
 	}
@@ -71,5 +74,10 @@ public class TheDoorMaze extends GameEngine {
 	@Override
 	public void update() {
 	}
+	
+    private void initializeSound() {
+      backgroundSound = new Sound(this, "src/main/java/nl/han/ica/TheDoorMaze/media/music/level1.mp3");
+      backgroundSound.loop(-1);
+  }
 
 }

@@ -20,13 +20,11 @@ public class Flower extends ActionObject implements ICollidableWithGameObjects {
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
-				System.out.println(world.inventory.getItem());
 				if (world.key == ' ' && this.isUsed == false) {
 					this.isUsed = true;
 					this.setSprite(new Sprite(emptyImage));
 					world.inventory.addItem(this.itemName);
 				}
-
 			}
 		}
 	}
