@@ -23,7 +23,7 @@ public class ActionObject extends SpriteObject {
 	public ActionObject(String img, String itemName) {
 		super(new Sprite(img));
 		this.itemName = itemName;
-		this.inventory = new Inventory();
+		ActionObject.inventory = new Inventory();
 	}
 
 	@Override
@@ -31,6 +31,6 @@ public class ActionObject extends SpriteObject {
 	}
 	
 	public Inventory getInventory(){
-		return this.inventory;
+		return ActionObject.inventory;
 	}
 }

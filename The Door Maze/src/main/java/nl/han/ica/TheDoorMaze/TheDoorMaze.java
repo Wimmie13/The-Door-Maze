@@ -23,6 +23,7 @@ public class TheDoorMaze extends GameEngine {
 	private Door bathroomdoor;
 	private Flower flower;
 	private Waterfountain waterfountain;
+	private Sound backgroundSound;
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.TheDoorMaze.TheDoorMaze" });
@@ -35,7 +36,7 @@ public class TheDoorMaze extends GameEngine {
 		int worldHeight = 480;
 
 		createObjects();
-
+        initializeSound();
 		createViewWithViewport(worldWidth, worldHeight, 848, 480);
 	}
 
@@ -62,5 +63,10 @@ public class TheDoorMaze extends GameEngine {
 	@Override
 	public void update() {
 	}
+	
+    private void initializeSound() {
+      backgroundSound = new Sound(this, "src/main/java/nl/han/ica/TheDoorMaze/media/music/level1.mp3");
+      backgroundSound.loop(-1);
+  }
 
 }

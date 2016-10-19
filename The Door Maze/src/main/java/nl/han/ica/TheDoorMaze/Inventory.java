@@ -15,10 +15,12 @@ public class Inventory {
 		this.items.add(new Item(name));
 	}
 	
-	public String getItem(){
+	public String getItem(String itemName){
 		for (Item b : items) {
+			if (b.getName() == itemName){
 		    return b.getName();
+			}
 		}
-		return "niks";
+		return "dit item zit niet in je inventory";
 	}
 }
