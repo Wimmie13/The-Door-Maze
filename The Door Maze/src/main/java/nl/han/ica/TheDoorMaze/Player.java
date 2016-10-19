@@ -1,5 +1,7 @@
 package nl.han.ica.TheDoorMaze;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
+import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.CollidedTile;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithTiles;
@@ -14,18 +16,16 @@ import processing.core.PVector;
 import java.util.List;
 import java.util.Random;
 
-public class Player extends AnimatedSpriteObject implements ICollidableWithGameObjects {
+public class Player extends AnimatedSpriteObject implements ICollidableWithGameObjects, IAlarmListener {
 
     final int height = 240;
     final int width = 100;
-    private int currentFrame;
     private final TheDoorMaze world;
     
 
     public Player(TheDoorMaze world) {
         super(new Sprite("src/main/java/nl/han/ica/TheDoorMaze/media/player.png"),16);
         this.world=world;
-        this.currentFrame = 0;
 //        setFriction(0.05f);
     }
 
@@ -39,28 +39,24 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
             this.setxSpeed(0);
             this.setX(world.getView().getWorldWidth() - this.width);
         }
-        if (this.getCurrentFrameIndex() != this.currentFrame){
-        	this.setCurrentFrameIndex(this.currentFrame);
-        }
     }
 
 	@Override
     public void keyPressed(int keyCode, char key) {
         final int speed = 5;
         if (keyCode == world.LEFT) {
+        	Alarm playSprite = new Alarm("Walk left", 0.1);
+        	playSprite.addTarget(this);
+        	playSprite.start();
             setDirectionSpeed(270, speed);
-            if(this.currentFrame < 15){
-            	this.nextFrame();
-            } else {
-            	this.currentFrame = 9;
-            }
+            
         }
         if (keyCode == world.RIGHT) {
             setDirectionSpeed(90, speed);
-            if(this.currentFrame < 7){
+            if(this.getCurrentFrameIndex() < 7){
             	this.nextFrame();
             } else {
-            	this.currentFrame = 0;
+            	this.setCurrentFrameIndex(0);
             }
         }
         if (key == ' ') {
@@ -70,13 +66,14 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 	
 	@Override
 	public void keyReleased(int keyCode, char key){
+
 		final int speed = 0;
 		setSpeed(speed);
 
         if (this.getDirection() == 270){
-        	this.currentFrame = 8;
+        	this.setCurrentFrameIndex(8);
         } else {
-        	this.currentFrame = 0;
+        	this.setCurrentFrameIndex(0);
         }
 	}
     
@@ -89,4 +86,14 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 //            }
 //        }
     }
+
+	@Override
+	public void triggerAlarm(String alarmName) {
+		if(this.getCurrentFrameIndex() < 15 && this.getCurrentFrameIndex() >= 9){
+        	this.nextFrame();
+        	System.out.println("BIER");
+        } else {
+        	this.setCurrentFrameIndex(9);
+        }
+	}
 }
