@@ -25,11 +25,11 @@ public class Locker extends ActionObject implements ICollidableWithGameObjects {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
 				if (message.getIsShown() == true && world.key == TheDoorMaze.ENTER){
-					this.checkInput();
+					checkInput();
 				} else if (world.key == ' ' && this.isUsed == false && this.open == true) {
 					this.isUsed = true;
 					TheDoorMaze.inventory.addItem(this.itemName);
-				} else if (world.key == ' ' && this.isUsed == false){
+				} else if (world.key == ' ' && this.isUsed == false && this.message.getIsShown() == false){
 					message = new MessageBox(world, "Locker", "This is the locker of Ricky", "Enter the right values to open the locker.");
 					message.hasInput();
 					((Player) g).setWalkAllowed();
@@ -39,7 +39,28 @@ public class Locker extends ActionObject implements ICollidableWithGameObjects {
 	}
 	
 	private void checkInput(){
-		
+		if(this.message.getInput().length() == 4){
+			if(this.message.getInput().equals(this.lock)){
+				this.setOpen();
+				this.isUsed = true;
+				TheDoorMaze.inventory.addItem(this.itemName);
+				this.message.removeDashboard();
+			} else {
+				this.message.resetInput();
+			}
+		}
+	}
+	
+	@Override
+	public void keyReleased(int keyCode, char key) {
+		if(message.getIsShown()){
+			if(key >= '0' && key <= '9' && this.message.getInput().length() < 4){
+				this.message.setInput(key);
+			}
+			if(key == TheDoorMaze.BACKSPACE){
+				this.message.setInputBackspace();
+			}
+		}
 	}
 	
 	public boolean getOpen(){

@@ -4,16 +4,16 @@ import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import processing.core.PGraphics;
 
-@SuppressWarnings("static-access")
 public class MessageBox extends GameObject{
 
 	TheDoorMaze world;
-	private static boolean isShown = false;
+	private boolean isShown = false;
 	private Dashboard dashboardAction;
 	private float dashboardX, dashboardY, dashboardWidth, dashboardHeight;
 	private String[] text;
 	private String input;
 	private String closeMessage;
+	private boolean hasInput;
 	
 	public MessageBox(){
 		
@@ -27,7 +27,9 @@ public class MessageBox extends GameObject{
 		this.dashboardY = world.getHeight() - this.dashboardHeight;
 		this.text = new String[]{NPCname, line1, line2};
 		this.closeMessage = "Druk op enter om te sluiten";
+		this.input = "";
 		createDashboard();
+		System.out.println("1");
 	}
 	
 	public MessageBox(TheDoorMaze world, String NPCname, String line1, String line2, String line3){
@@ -39,6 +41,7 @@ public class MessageBox extends GameObject{
 		this.text = new String[]{NPCname, line1, line2, line3};
 		this.closeMessage = "Druk op enter om te sluiten";
 		createDashboard();
+		System.out.println("2");
 	}
 
 	@Override
@@ -63,7 +66,7 @@ public class MessageBox extends GameObject{
 		for(int i = 1; i < text.length; i++){
 			g.text(text[i], marginLeft, marginTop + marginText * i);
 		}
-		g.text("Invoer: " + this.input, marginLeft, marginTop + marginText * (text.length + 1));
+		drawInput(g, (this.dashboardWidth - marginRight), marginTop, marginText);
 		g.textAlign(RIGHT);
 		g.text(this.closeMessage, this.dashboardWidth - marginRight, this.dashboardHeight - marginTop);
 	}
@@ -84,15 +87,33 @@ public class MessageBox extends GameObject{
 		return this.isShown;
 	}
 	
-	public void addInput(String input){
-		
+	public void setInput(char input){
+		this.input = this.input + input;
+	}
+	
+	public void setInputBackspace(){
+		if(this.input.length() > 0){
+			this.input = this.input.substring(0, this.input.length() - 1);
+		}
+	}
+	
+	public void resetInput(){
+		this.input = "";
 	}
 	
 	public String getInput(){
 		return input;
 	}
 	
+	private void drawInput(PGraphics g, float marginRight, int marginTop, int marginText){
+		if(this.hasInput == true){
+			int marginInvoer = 215;
+			g.text("Invoer: " + this.input, marginRight - marginInvoer, marginTop + marginText);
+		}
+	}
+	
 	public void hasInput(){
+		this.hasInput = true;
 		this.closeMessage = "Druk op enter om door te gaan.";
 	}
 

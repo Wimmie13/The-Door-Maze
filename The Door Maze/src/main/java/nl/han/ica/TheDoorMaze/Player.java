@@ -9,7 +9,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 import java.util.List;
 
-@SuppressWarnings("static-access")
 public class Player extends AnimatedSpriteObject implements ICollidableWithGameObjects, IAlarmListener {
 
 	final int height = 240;
@@ -42,14 +41,14 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 	public void keyPressed(int keyCode, char key) {
 		if (this.walkAllowed == true) {
 			final int speed = 5;
-			if (keyCode == world.LEFT) {
+			if (keyCode == TheDoorMaze.LEFT) {
 				if (this.alarmOn == false) {
 					this.alarmOn = true;
 					setDirectionSpeed(270, speed);
 					startAlarm("Walk left");
 				}
 			}
-			if (keyCode == world.RIGHT) {
+			if (keyCode == TheDoorMaze.RIGHT) {
 				if (this.alarmOn == false) {
 					this.alarmOn = true;
 					setDirectionSpeed(90, speed);
@@ -77,25 +76,25 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
 	@Override
 	public void keyReleased(int keyCode, char key) {
-		if (world.inventory.getIsOpen() == false) {
+		if (TheDoorMaze.inventory.getIsOpen() == false) {
 			final int speed = 0;
 			setSpeed(speed);
 			if (this.alarmOn == true) {
 				startAlarm("STOP");
 			}
 		}
-		if (key == 'i' && world.inventory.getIsOpen() == false) {
+		if (key == 'i' && TheDoorMaze.inventory.getIsOpen() == false) {
 			this.setWalkAllowed();
-			world.inventory.setIsOpen();
-			world.inventory.createDashboard();
+			TheDoorMaze.inventory.setIsOpen();
+			TheDoorMaze.inventory.createDashboard();
 			this.setSpeed(0);
 			if (this.alarmOn == true) {
 				startAlarm("STOP");
 			}
 		} else if (key == 'i') {
 			this.setWalkAllowed();
-			world.inventory.setIsOpen();
-			world.inventory.removeDashboard();
+			TheDoorMaze.inventory.setIsOpen();
+			TheDoorMaze.inventory.removeDashboard();
 		}
 	}
 
