@@ -2,7 +2,6 @@ package nl.han.ica.TheDoorMaze;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 import java.util.List;
 
@@ -10,8 +9,8 @@ public class Bookshelf extends ActionObject implements ICollidableWithGameObject
 	private TheDoorMaze world;
 	private static String image = "src/main/java/nl/han/ica/TheDoorMaze/media/objects/bookcase.png";
 
-	public Bookshelf(TheDoorMaze world, String itemName) {
-		super(image, itemName);
+	public Bookshelf(TheDoorMaze world, int x, int y, String itemName) {
+		super(image, itemName, x, y);
 		this.world = world;
 	}
 

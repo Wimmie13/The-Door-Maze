@@ -10,8 +10,8 @@ public class Door extends ActionObject implements ICollidableWithGameObjects {
 	private TheDoorMaze world;
 	private boolean keyNeeded;
 
-	public Door(TheDoorMaze world, String img, String naar, String itemName, boolean keyNeeded) {
-		super(img, itemName);
+	public Door(TheDoorMaze world, int x, int y, String image, String naar, String itemName, boolean keyNeeded) {
+		super(image, itemName, x, y);
 		this.naar = naar;
 		this.world = world;
 		this.keyNeeded = keyNeeded;

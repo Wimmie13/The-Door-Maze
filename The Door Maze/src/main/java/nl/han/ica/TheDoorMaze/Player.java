@@ -18,22 +18,25 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 	private boolean alarmOn;
 	private boolean walkAllowed;
 
-	public Player(TheDoorMaze world) {
+	public Player(TheDoorMaze world, int x, int y) {
 		super(new Sprite("src/main/java/nl/han/ica/TheDoorMaze/media/player.png"), 16);
 		this.world = world;
 		this.alarmOn = false;
 		this.walkAllowed = true;
+		
+		this.setX(x);
+		this.setY(y);
 	}
 
 	@Override
 	public void update() {
-		if (this.getX() <= 0 + 100) {
+		if (this.getX() <= 0) {
 			this.setxSpeed(0);
-			this.setX(0 + 100);
+			this.setX(0);
 		}
-		if (this.getX() >= world.getView().getWorldWidth() - this.width - 100) {
+		if (this.getX() >= world.getView().getWorldWidth() - this.width) {
 			this.setxSpeed(0);
-			this.setX(world.getView().getWorldWidth() - this.width - 100);
+			this.setX(world.getView().getWorldWidth() - this.width);
 		}
 	}
 

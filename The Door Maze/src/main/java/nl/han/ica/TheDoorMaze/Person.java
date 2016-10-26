@@ -14,8 +14,8 @@ public class Person extends ActionObject implements ICollidableWithGameObjects {
 	private Sound missionComplete;
 	private TheDoorMaze world;
 
-	public Person(String img, String itemName, TheDoorMaze world, String[] text, String missionObjective) {
-		super(img, itemName);
+	public Person(TheDoorMaze world, int x, int y, String image, String itemName, String[] text, String missionObjective) {
+		super(image, itemName, x, y);
 		this.world = world;
 		this.text = text;
 		this.missionObjective = missionObjective;

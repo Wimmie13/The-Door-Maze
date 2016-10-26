@@ -11,8 +11,8 @@ public class Waterfountain extends ActionObject implements ICollidableWithGameOb
 	private static String image = "src/main/java/nl/han/ica/TheDoorMaze/media/objects/sink.png";
 	private String emptyImage = "src/main/java/nl/han/ica/TheDoorMaze/media/objects/sink_empty.png";
 
-	public Waterfountain(TheDoorMaze world, String itemName) {
-		super(image, itemName);
+	public Waterfountain(TheDoorMaze world, int x, int y, String itemName) {
+		super(image, itemName, x, y);
 		this.world = world;
 	}
 

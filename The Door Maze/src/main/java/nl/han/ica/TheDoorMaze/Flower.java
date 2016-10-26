@@ -11,8 +11,8 @@ public class Flower extends ActionObject implements ICollidableWithGameObjects {
 	private static String image = "src/main/java/nl/han/ica/TheDoorMaze/media/objects/plant2.png";
 	private String emptyImage = "src/main/java/nl/han/ica/TheDoorMaze/media/objects/plant2empty.png";
 
-	public Flower(TheDoorMaze world, String itemName) {
-		super(image, itemName);
+	public Flower(TheDoorMaze world, int x, int y, String itemName) {
+		super(image, itemName, x, y);
 		this.world = world;
 	}
 

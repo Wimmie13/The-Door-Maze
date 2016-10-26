@@ -14,8 +14,8 @@ public class Computer extends ActionObject implements ICollidableWithGameObjects
 	private boolean hacked;
 	private Sound hackedSound;
 	
-	public Computer(TheDoorMaze world, String itemName) {
-		super(image, itemName);
+	public Computer(TheDoorMaze world, int x, int y, String itemName) {
+		super(image, itemName, x, y);
 		this.world = world;
 		this.hacked = false;
 		this.hackedSound = new Sound(world, "src/main/java/nl/han/ica/TheDoorMaze/media/music/hacked.mp3");

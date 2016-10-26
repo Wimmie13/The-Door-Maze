@@ -12,8 +12,8 @@ public class Locker extends ActionObject implements ICollidableWithGameObjects {
 	private String lock;
 	private MessageBox message;
 
-	public Locker(TheDoorMaze world, String itemName, String lock) {
-		super(image, itemName);
+	public Locker(TheDoorMaze world, int x, int y, String itemName, String lock) {
+		super(image, itemName, x, y);
 		this.world = world;
 		this.open = false;
 		this.message = new MessageBox();

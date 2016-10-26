@@ -12,8 +12,8 @@ public class Key extends ActionObject implements ICollidableWithGameObjects {
 	private Sound keySound;
 //	private int sw = 0;
 
-	public Key(TheDoorMaze world, String itemName) {
-		super(image, itemName);
+	public Key(TheDoorMaze world, int x, int y, String itemName) {
+		super(image, itemName, x, y);
 		this.world = world;
 		this.keySound = new Sound(world, "src/main/java/nl/han/ica/TheDoorMaze/media/music/item.mp3");
 	}
