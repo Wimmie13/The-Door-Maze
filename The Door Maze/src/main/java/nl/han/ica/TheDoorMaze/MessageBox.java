@@ -29,7 +29,6 @@ public class MessageBox extends GameObject{
 		this.closeMessage = "Druk op enter om te sluiten";
 		this.input = "";
 		createDashboard();
-		System.out.println("1");
 	}
 	
 	public MessageBox(TheDoorMaze world, String NPCname, String line1, String line2, String line3){
@@ -41,7 +40,6 @@ public class MessageBox extends GameObject{
 		this.text = new String[]{NPCname, line1, line2, line3};
 		this.closeMessage = "Druk op enter om te sluiten";
 		createDashboard();
-		System.out.println("2");
 	}
 
 	@Override

@@ -80,8 +80,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 	@Override
 	public void keyReleased(int keyCode, char key) {
 		if (TheDoorMaze.inventory.getIsOpen() == false) {
-			final int speed = 0;
-			setSpeed(speed);
+			setSpeed(0);
 			if (this.alarmOn == true) {
 				startAlarm("STOP");
 			}
