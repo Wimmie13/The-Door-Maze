@@ -10,6 +10,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.TheDoorMaze.Player;
 import nl.han.ica.TheDoorMaze.media.maps.Map1;
+import nl.han.ica.TheDoorMaze.media.maps.Map2;
 import processing.core.PApplet;
 
 @SuppressWarnings("serial")
@@ -21,7 +22,6 @@ public class TheDoorMaze extends GameEngine {
 	private ArrayList<Map> maps;
 
 	private Sound backgroundSound;
-	private Nothing nothing;
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.TheDoorMaze.TheDoorMaze" });
@@ -31,19 +31,14 @@ public class TheDoorMaze extends GameEngine {
 	public void setupGame() {
 		maps = new ArrayList<>();
 		maps.add(new Map1(this, 2910, 480, "src/main/java/nl/han/ica/TheDoorMaze/media/background.fw2.png"));
+		maps.add(new Map2(this, 1455, 480, "src/main/java/nl/han/ica/TheDoorMaze/media/background.fw.png"));
 		
 		int screenWidth = 848;
 		int screenHeight = 480;
 
 		inventory = new Inventory(this, 848, 480);
-		nothing = new Nothing("src/main/java/nl/han/ica/TheDoorMaze/media/objects/nothing.png");
-		addGameObject(nothing, screenWidth / 2, screenHeight / 2);
-		Button button = new Button("src/main/java/nl/han/ica/TheDoorMaze/media/startgame.png");
-		addGameObject(button, screenWidth / 2 - 100, screenHeight / 2 - 125);
-		createEdgeView(848, 480, 848, 480, 0, 0, nothing);
 		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/TheDoorMaze/media/music/intro.mp3");
 		backgroundSound.loop(-1);
-		startscreen();
 	}
 
 //	 private void createObjects() {
@@ -107,33 +102,6 @@ public class TheDoorMaze extends GameEngine {
 		inventory = new Inventory(this, 848, 480);
 		initializeSound("src/main/java/nl/han/ica/TheDoorMaze/media/music/level1.mp3");
 		this.map = 1;
-	}
-
-	private void map1() {
-		
-
-		EdgeFollowingViewport viewPort = new EdgeFollowingViewport(map1.getPlayer(), 848, 480, 0, 80);
-		viewPort.setTolerance(0, 0, 100, 100);
-		View view = new View(viewPort, map1.getMapWidth(), map1.getMapHeight());
-		setView(view);
-		view.setBackground(loadImage(map1.getBackground()));
-		this.map = 0;
-	}
-
-	private void map2() {
-		Map map2 = new Map(this, 1455, 480, "src/main/java/nl/han/ica/TheDoorMaze/media/background.fw.png");
-		map2.addObject(new Computer(this, 600, 200, "Barry's files"));
-		map2.addObject(new Door(this, 700, 130, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "1",
-				"BathRoom", false));
-		map2.addObject(new Player(this, 600, 200));
-		map2.drawMap();
-
-		EdgeFollowingViewport viewPort = new EdgeFollowingViewport(map2.getPlayer(), 840, 480, 0, 80);
-		viewPort.setTolerance(0, 0, 100, 100);
-		View view = new View(viewPort, map2.getMapWidth(), map2.getMapHeight());
-		setView(view);
-		view.setBackground(loadImage(map2.getBackground()));
-		this.map = 0;
 	}
 
 	private void startscreen() {
