@@ -7,7 +7,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.View.CenterFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 
-public class Map {
+public abstract class Map implements IMap{
 	protected final TheDoorMaze world;
 	protected ArrayList<GameObject> objects;
 	
@@ -21,15 +21,27 @@ public class Map {
 		this.mapWidth = mapWidth;
 		this.mapHeight = mapHeight;
 		this.background = background;
-		
-    	world.deleteAllGameOBjects();
-    	world.deleteAllDashboards();
 	}
 	
-	protected void drawMap(){
+	private void checkUsedObjects(){
+		for(int i = 0; i < this.objects.size(); i++){
+			if(this.objects.get(i) instanceof ActionObject){
+				((ActionObject) this.objects.get(i)).checkIsUsed();
+			}
+		}
+	}
+	
+	public void drawMap(){
+    	world.deleteAllGameOBjects();
+    	world.deleteAllDashboards();
 		for(int i = 0; i < this.objects.size(); i++){
 			world.addGameObject(this.objects.get(i));
+			if(this.objects.get(i) instanceof ActionObject){
+				((ActionObject) this.objects.get(i)).checkIsUsed();
+				System.out.println("Test");
+			}
 		}
+		this.drawView();
 	}
 	
 	protected GameObject getPlayer(){
@@ -47,7 +59,7 @@ public class Map {
 		View view = new View(viewPort, worldWidth, worldHeight);
 		world.setView(view);
 		world.size(screenWidth, screenHeight);
-		view.setBackground(world.loadImage("src/main/java/nl/han/ica/TheDoorMaze/media/startscreenbg.png"));
+		view.setBackground(world.loadImage(this.background));
 	}
 	
 	protected void createEdgeView(int screenWidth, int screenHeight, double xOffset, double yOffset, GameObject object) {
@@ -58,4 +70,14 @@ public class Map {
 		world.size(screenWidth, screenHeight);
 		view.setBackground(world.loadImage(this.background));
 	}
+	
+	protected void createView(){
+		View view = new View(this.mapWidth, this.mapHeight);
+		world.setView(view);
+		world.size(this.mapWidth, this.mapHeight);
+		view.setBackground(world.loadImage(this.background));
+	}
+
+	@Override
+	public abstract void drawView();
 }
