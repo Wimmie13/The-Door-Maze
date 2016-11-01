@@ -1,6 +1,7 @@
 package nl.han.ica.TheDoorMaze;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
@@ -23,12 +24,21 @@ public class Date extends ActionObject implements ICollidableWithGameObjects {
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
-				if (world.key == ' ' && this.isUsed == false && message.getIsShown() == false) {
-					message = new MessageBox(world, "Chantal", this.text[0], "", "");
+				if (world.key == ' ' && this.isUsed == false && message.getIsShown() == false && world.getStopWatch().getTime(TimeUnit.SECONDS) <= 20) {
+					world.getStopWatch().stop();
+					message = new MessageBox(world, "Chantal", this.text[0], "Dat heeft wel "+world.getStopWatch().getTime(TimeUnit.SECONDS)+" seconden geduurt!", "");
 					((Player) g).setWalkAllowed();
 					missionComplete.play();
 					this.isUsed = true;
-				}  else if (world.key == TheDoorMaze.ENTER && message.getIsShown() == true) {
+				}  
+				else if (world.key == ' ' && this.isUsed == false && message.getIsShown() == false && world.getStopWatch().getTime(TimeUnit.SECONDS) >= 20) {
+					world.getStopWatch().stop();
+					message = new MessageBox(world, "Chantal", this.text[0], "Dat heeft wel "+world.getStopWatch().getTime(TimeUnit.SECONDS)+" seconden geduurt!", "Schiet de volgende keer een beetje op ja!");
+					((Player) g).setWalkAllowed();
+					missionComplete.play();
+					this.isUsed = true;
+				}
+				else if (world.key == TheDoorMaze.ENTER && message.getIsShown() == true) {
 					message.removeDashboard();
 					((Player) g).setWalkAllowed();
 					world.nextMap = 3;

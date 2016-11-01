@@ -2,7 +2,6 @@ package nl.han.ica.TheDoorMaze.media.maps;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.TheDoorMaze.IMap;
-import nl.han.ica.TheDoorMaze.Inventory;
 import nl.han.ica.TheDoorMaze.Map;
 import nl.han.ica.TheDoorMaze.TheDoorMaze;
 
@@ -15,7 +14,6 @@ public class EindScherm extends Map implements IMap{
 	@Override
 	public void drawView() {
 		this.createView();
-		TheDoorMaze.inventory = new Inventory(this.world, 848, 480);
 	}
 
 	@Override
