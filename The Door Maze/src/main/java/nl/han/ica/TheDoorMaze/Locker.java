@@ -31,10 +31,10 @@ public class Locker extends ActionObject implements ICollidableWithGameObjects {
 					this.isUsed = true;
 					TheDoorMaze.inventory.addItem(this.itemName);
 				} else if (world.key == ' ' && this.isUsed == false && this.message.getIsShown() == false){
-					message = new MessageBox(world, "Locker", "This is the locker of Ricky", "Enter the right values to open the locker.");
+					message = new MessageBox(world, "Kluis", "Kluis van Ricky", "Gebruik de juiste nummer combinatie.");
 					message.hasInput();
 				} else if (world.key == ' ' && this.isUsed == true){
-					notify = new Notification(this.world, notify, "This locker is empty");
+					notify = new Notification(this.world, notify, "Deze kluis is leeg.");
 				}
 			}
 		}
