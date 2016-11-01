@@ -14,9 +14,8 @@ public class Map3 extends Map implements IMap{
 		// TODO Auto-generated constructor stub
 		this.objects.add(new Door(this.world, 700, 130, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "2",
 				"BathRoom", false));
-		this.objects.add(new Date(world, 900, 200, "src/main/java/nl/han/ica/TheDoorMaze/media/objects/chick.png", new String[]{
-				
-		"Daar ben je dan eindelijk, ik heb zo lang op je gewacht!"}));
+		this.objects.add(new Date(world, 900, 200, "src/main/java/nl/han/ica/TheDoorMaze/media/objects/chick.png",
+				new String[]{"Daar ben je dan eindelijk, ik heb zo lang op je gewacht!"}));
 		this.objects.add(new Player(this.world, 500, 200));
 	}
 

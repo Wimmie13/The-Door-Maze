@@ -125,19 +125,19 @@ public abstract class Map implements IMap, IAlarmListener{
 	@Override
 	public void triggerAlarm(String alarmName) {
 		if(alarmName == "Gametimer"){
-			if(this.gametime == 5){
+			if(this.gametime == 60){
 				for(Map map : world.getMaps()){
 					if(map.getDate() != null){
 						((Date)map.getDate()).moveRoom();
 					}
 				}
-			} else if (this.gametime == 60){
+			} else if (this.gametime == 90){
 				for(Map map : world.getMaps()){
 					if(map.getDate() != null){
 						((Date)map.getDate()).endGame();
 					}
 				}
-			} else if (this.gametime == 70){
+			} else if (this.gametime == 100){
 				world.setNextMap(3);
 				return;
 			}
