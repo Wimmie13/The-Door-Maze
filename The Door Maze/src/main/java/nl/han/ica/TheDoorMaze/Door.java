@@ -28,11 +28,8 @@ public class Door extends ActionObject implements ICollidableWithGameObjects {
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
-				System.out.println(TheDoorMaze.inventory.itemInInventory("2"));
-				System.out.println(TheDoorMaze.inventory.getItem("2"));
 				if(TheDoorMaze.inventory != null){
 					if (world.keyCode == TheDoorMaze.UP && TheDoorMaze.inventory.itemInInventory(this.naar) == true && keyNeeded == true) {
-						System.out.println("fakka");
 						world.nextMap = Integer.parseInt(this.naar);
 					} else if (world.keyCode == TheDoorMaze.UP && keyNeeded == false){
 						world.nextMap = Integer.parseInt(this.naar);

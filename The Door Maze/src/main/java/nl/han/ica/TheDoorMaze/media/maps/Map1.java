@@ -1,14 +1,12 @@
 package nl.han.ica.TheDoorMaze.media.maps;
 
-import com.sun.xml.internal.fastinfoset.algorithm.BuiltInEncodingAlgorithm.WordListener;
-
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.TheDoorMaze.Bookshelf;
 import nl.han.ica.TheDoorMaze.Computer;
 import nl.han.ica.TheDoorMaze.Door;
 import nl.han.ica.TheDoorMaze.Flower;
 import nl.han.ica.TheDoorMaze.IMap;
-import nl.han.ica.TheDoorMaze.Inventory;
 import nl.han.ica.TheDoorMaze.Key;
 import nl.han.ica.TheDoorMaze.Locker;
 import nl.han.ica.TheDoorMaze.Map;
@@ -16,7 +14,6 @@ import nl.han.ica.TheDoorMaze.Person;
 import nl.han.ica.TheDoorMaze.Player;
 import nl.han.ica.TheDoorMaze.TheDoorMaze;
 import nl.han.ica.TheDoorMaze.Waterfountain;
-import sun.security.acl.WorldGroupImpl;
 
 public class Map1 extends Map implements IMap{
 

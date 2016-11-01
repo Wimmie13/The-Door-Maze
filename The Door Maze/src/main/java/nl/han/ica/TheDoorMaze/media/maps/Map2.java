@@ -20,7 +20,7 @@ public class Map2 extends Map implements IMap{
 		this.objects.add(new Date(world, 900, 200, "src/main/java/nl/han/ica/TheDoorMaze/media/objects/chick.png", new String[]{
 				
 		"Daar ben je dan eindelijk, ik heb zo lang op je gewacht!"}));
-		this.objects.add(new Player(this.world, 600, 200));
+		this.objects.add(new Player(this.world, 500, 200));
 	}
 
 	@Override

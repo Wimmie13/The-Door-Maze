@@ -36,11 +36,8 @@ public abstract class Map implements IMap{
     	world.deleteAllDashboards();
 		for(int i = 0; i < this.objects.size(); i++){
 			world.addGameObject(this.objects.get(i));
-			if(this.objects.get(i) instanceof ActionObject){
-				((ActionObject) this.objects.get(i)).checkIsUsed();
-				System.out.println("Test");
-			}
 		}
+		this.checkUsedObjects();
 		this.initializeSound();
 		this.drawView();
 		world.keyCode = TheDoorMaze.DOWN;
@@ -85,5 +82,16 @@ public abstract class Map implements IMap{
 	
 	@Override
 	public abstract void initializeSound();
+	
+	protected void setPlayerPosition(int currentMap){
+		for(int i = 0; i < this.objects.size(); i++){
+			if(this.objects.get(i) instanceof Door){
+				Door door = (Door) this.objects.get(i);
+				if(door.getNaar().equals(Integer.toString(currentMap))){
+					this.getPlayer().setX(door.getX() + door.getWidth());
+				}
+			}
+		}
+	}
 	
 }
