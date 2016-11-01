@@ -131,13 +131,13 @@ public abstract class Map implements IMap, IAlarmListener{
 						((Date)map.getDate()).moveRoom();
 					}
 				}
-			} else if (this.gametime == 10){
+			} else if (this.gametime == 60){
 				for(Map map : world.getMaps()){
 					if(map.getDate() != null){
 						((Date)map.getDate()).endGame();
 					}
 				}
-			} else if (this.gametime == 20){
+			} else if (this.gametime == 70){
 				world.setNextMap(3);
 				return;
 			}
