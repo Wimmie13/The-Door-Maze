@@ -9,17 +9,16 @@ import processing.core.PGraphics;
 public class Notification extends GameObject implements IAlarmListener{
 
 	private TheDoorMaze world;
-	private boolean isShown = false;
 	private Dashboard dashboardAction;
 	private float dashboardX, dashboardY, dashboardWidth, dashboardHeight;
 	private String text;
 	private Alarm alarm;
 	
-	public Notification(TheDoorMaze world, Notification notify, String text, Double seconds){
+	public Notification(TheDoorMaze world, String text, Double seconds){
 		this.world = world;
-		if(notify != null){
-			notify.alarm.stop();
-			notify.removeDashboard();
+		if(Map.notify != null){
+			Map.notify.alarm.stop();
+			Map.notify.removeDashboard();
 		}
 		this.text = text;
 		this.dashboardWidth = 30 + text.length() * 8;
@@ -32,11 +31,11 @@ public class Notification extends GameObject implements IAlarmListener{
 		this.alarm.start();
 	}
 	
-	public Notification(TheDoorMaze world, Notification notify, String text){
+	public Notification(TheDoorMaze world, String text){
 		this.world = world;
-		if(notify != null){
-			notify.alarm.stop();
-			notify.removeDashboard();
+		if(Map.notify != null){
+			Map.notify.alarm.stop();
+			Map.notify.removeDashboard();
 		}
 		this.text = text;
 		this.dashboardWidth = 30 + text.length() * 8;
@@ -69,11 +68,9 @@ public class Notification extends GameObject implements IAlarmListener{
 		dashboardAction = new Dashboard(this.dashboardX, this.dashboardY, this.dashboardWidth, this.dashboardHeight);
 		dashboardAction.addGameObject(this);
 		world.addDashboard(dashboardAction);
-		this.isShown = true;
 	}
 	
 	public void removeDashboard(){
-		this.isShown = false;
 		world.deleteDashboard(dashboardAction);
 	}
 
@@ -82,5 +79,9 @@ public class Notification extends GameObject implements IAlarmListener{
 		if(alarmName == "Notification"){
 			this.removeDashboard();
 		}
+	}
+	
+	public String getText(){
+		return this.text;
 	}
 }

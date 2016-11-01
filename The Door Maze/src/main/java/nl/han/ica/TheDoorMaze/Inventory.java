@@ -13,7 +13,7 @@ public class Inventory extends GameObject {
 	private final TheDoorMaze world;
 	private Dashboard dashboard;
 	private float dashboardX, dashboardY, dashboardWidth, dashboardHeight;
-	private ArrayList<Mission> missies = new ArrayList<Mission>();
+	private ArrayList<Item> missies = new ArrayList<Item>();
 
 	public Inventory(TheDoorMaze world, int width, int height) {
 		this.world = world;
@@ -27,6 +27,13 @@ public class Inventory extends GameObject {
 	public void addItem(String name) {
 		this.items.add(new Item(name));
 		this.InvisibleItems.add(new Item(name));
+		Map.notify = new Notification(this.world, name + " is verplaatst naar je inventory.");
+	}
+	
+	public void addItem(Item item) {
+		this.items.add(item);
+		this.InvisibleItems.add(item);
+		Map.notify = new Notification(this.world, item.getName() + " is verplaatst naar je inventory.");
 	}
 	
 	public void addItemInvis(String name){
@@ -36,7 +43,7 @@ public class Inventory extends GameObject {
 	public String getItem(String itemName){
 		for (Item b : items) {
 			if (b.getName() == itemName){
-		    return b.getName();
+				return b.getName();
 			}
 		}
 		return "dit item zit niet in je inventory";
@@ -54,6 +61,14 @@ public class Inventory extends GameObject {
 	public void delItem(String itemName){
 		for(int i = 0; i < items.size(); i++){
 			if (items.get(i).getName() == itemName){
+				items.remove(i);
+			}
+		}
+	}
+	
+	public void delItem(Item item){
+		for(int i = 0; i < items.size(); i++){
+			if (items.get(i).getName().equals(item.getName())){
 				items.remove(i);
 			}
 		}
@@ -108,7 +123,7 @@ public class Inventory extends GameObject {
 			g.text(items.get(i).getName(), marginLeft, marginHeader + marginTop + marginText * (i + 1));
 		}
 		for(int i = 0; i < missies.size(); i++){
-			g.text(missies.get(i).getMission(), this.dashboardWidth/2 + marginLeft,  marginHeader + marginTop + marginText * (i + 1));
+			g.text(missies.get(i).getName(), this.dashboardWidth/2 + marginLeft,  marginHeader + marginTop + marginText * (i + 1));
 		}
 	}
 
@@ -127,12 +142,12 @@ public class Inventory extends GameObject {
 	}
 	
 	public void addMission(String name) {
-		this.missies.add(new Mission(name));
+		this.missies.add(new Item(name));
 	}
 	
 	public void delMission(String name) {
 		for(int i = 0; i < missies.size(); i++){
-			if (missies.get(i).getMission() == name){
+			if (missies.get(i).getName() == name){
 				missies.remove(i);
 			}
 		}

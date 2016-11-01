@@ -85,14 +85,14 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 				startAlarm("STOP");
 			}
 		}
-		if (key == 'i' && TheDoorMaze.inventory.getIsOpen() == false) {
+		if (key == 'i' && TheDoorMaze.inventory.getIsOpen() == false && Map.message.getIsShown() == false) {
 			this.setWalkAllowed();
 			TheDoorMaze.inventory.createDashboard();
 			this.setSpeed(0);
 			if (this.alarmOn == true) {
 				startAlarm("STOP");
 			}
-		} else if (key == 'i') {
+		} else if (key == 'i' && Map.message.getIsShown() == false) {
 			this.setWalkAllowed();
 			TheDoorMaze.inventory.removeDashboard();
 		}

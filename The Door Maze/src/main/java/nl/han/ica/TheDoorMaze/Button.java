@@ -28,7 +28,7 @@ public class Button extends SpriteObject implements IMouseInput {
 	@Override
 	public void mouseClicked(int x, int y, int button){
 		if(x >= this.x && x <= this.x + this.width && x >= this.y && y <= this.y + this.height){
-			world.nextMap = this.nextMap;
+			world.setNextMap(this.nextMap);
 		}
 	}
 }

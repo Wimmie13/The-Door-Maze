@@ -2,18 +2,13 @@ package nl.han.ica.TheDoorMaze;
 
 import java.util.ArrayList;
 
-import org.apache.commons.lang3.time.StopWatch;
-
-import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
-import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
-import nl.han.ica.TheDoorMaze.media.maps.StartScherm;
-import nl.han.ica.waterworld.TextObject;
-import nl.han.ica.TheDoorMaze.media.maps.EindScherm;
-import nl.han.ica.TheDoorMaze.media.maps.Map1;
-import nl.han.ica.TheDoorMaze.media.maps.Map2;
-import nl.han.ica.TheDoorMaze.media.maps.Map3;
+import nl.han.ica.TheDoorMaze.maps.StartScherm;
+import nl.han.ica.TheDoorMaze.maps.Map3;
+import nl.han.ica.TheDoorMaze.maps.EindScherm;
+import nl.han.ica.TheDoorMaze.maps.Map1;
+import nl.han.ica.TheDoorMaze.maps.Map2;
 import processing.core.PApplet;
 
 @SuppressWarnings("serial")
@@ -21,11 +16,10 @@ public class TheDoorMaze extends GameEngine {
 
 	public static Inventory inventory;
 
-	public int currentMap;
-	public int nextMap;
-	public ArrayList<Map> maps;
+	private int currentMap;
+	private int nextMap;
+	private ArrayList<Map> maps;
 	private Sound backgroundSound;
-	private StopWatch stopWatch;
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.TheDoorMaze.TheDoorMaze" });
@@ -43,8 +37,7 @@ public class TheDoorMaze extends GameEngine {
 		maps.add(new EindScherm(this, 848, 480, "src/main/java/nl/han/ica/TheDoorMaze/media/endcart.png"));
 		this.currentMap = 0;
 		this.nextMap = 0;
-		this.maps.get(currentMap).drawMap();	
-		stopWatch = new StopWatch();
+		this.maps.get(currentMap).drawMap();
 	}
 
 	@Override
@@ -58,6 +51,7 @@ public class TheDoorMaze extends GameEngine {
 				}
 			}
 		}
+		this.maps.get(currentMap).checkViewPort();
 	}
 
 	public void initializeSound(String muziek) {
@@ -74,7 +68,15 @@ public class TheDoorMaze extends GameEngine {
 		this.backgroundSound = backgroundSound;
 	}
 	
-	public StopWatch getStopWatch(){
-		return this.stopWatch;
+	public int getCurrentMap(){
+		return this.currentMap;
+	}
+	
+	public void setNextMap(int nextMap){
+		this.nextMap = nextMap;
+	}
+	
+	public ArrayList<Map> getMaps(){
+		return this.maps;
 	}
 }
