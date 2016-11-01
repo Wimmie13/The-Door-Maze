@@ -18,9 +18,6 @@ public class Door extends ActionObject{
 		return this.naar;
 	}
 
-	public void keyPressed(int keyCode, char key) {
-	}
-
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
