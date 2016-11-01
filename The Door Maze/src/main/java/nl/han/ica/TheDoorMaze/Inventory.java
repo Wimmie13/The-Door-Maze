@@ -113,6 +113,7 @@ public class Inventory extends GameObject {
 	}
 
 	public void createDashboard() {
+		this.isOpen = true;
 		dashboard = new Dashboard(this.dashboardX, this.dashboardY, this.dashboardWidth, this.dashboardHeight);
 
 		dashboard.addGameObject(this);
@@ -121,6 +122,7 @@ public class Inventory extends GameObject {
 	}
 	
 	public void removeDashboard(){
+		this.isOpen = false;
 		world.deleteDashboard(dashboard);
 	}
 	

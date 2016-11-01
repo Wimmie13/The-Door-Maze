@@ -46,14 +46,11 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 			final int speed = 5;
 			if (keyCode == TheDoorMaze.LEFT) {
 				if (this.alarmOn == false) {
-					this.alarmOn = true;
 					setDirectionSpeed(270, speed);
 					startAlarm("Walk left");
 				}
-			}
-			if (keyCode == TheDoorMaze.RIGHT) {
+			} else if (keyCode == TheDoorMaze.RIGHT) {
 				if (this.alarmOn == false) {
-					this.alarmOn = true;
 					setDirectionSpeed(90, speed);
 					startAlarm("Walk right");
 				}
@@ -62,6 +59,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 	}
 
 	private void startAlarm(String alarmName) {
+		this.alarmOn = true;
 		this.alarm = new Alarm(alarmName, 0.1F);
 		this.alarm.addTarget(this);
 		this.alarm.start();
@@ -69,6 +67,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
 	private void stopAlarm() {
 		this.alarm.stop();
+		this.alarm = null;
+		this.alarmOn = false;
 
 		if (this.getDirection() == 270) {
 			this.setCurrentFrameIndex(8);
@@ -80,14 +80,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 	@Override
 	public void keyReleased(int keyCode, char key) {
 		if (TheDoorMaze.inventory.getIsOpen() == false) {
-			setSpeed(0);
-			if (this.alarmOn == true) {
+			if (this.alarm != null) {
+				setSpeed(0);
 				startAlarm("STOP");
 			}
 		}
 		if (key == 'i' && TheDoorMaze.inventory.getIsOpen() == false) {
 			this.setWalkAllowed();
-			TheDoorMaze.inventory.setIsOpen();
 			TheDoorMaze.inventory.createDashboard();
 			this.setSpeed(0);
 			if (this.alarmOn == true) {
@@ -95,19 +94,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 			}
 		} else if (key == 'i') {
 			this.setWalkAllowed();
-			TheDoorMaze.inventory.setIsOpen();
 			TheDoorMaze.inventory.removeDashboard();
 		}
+		
 	}
 
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-		// for (GameObject g:collidedGameObjects) {
-		// if (g instanceof Door) {
-		// Door c = (Door)g;
-		// System.out.println("dit is een deur");
-		// }
-		// }
 	}
 
 	@Override
@@ -117,7 +110,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 		} else if (alarmName == "Walk right") {
 			this.walkRight();
 		} else if (alarmName == "STOP") {
-			this.alarmOn = false;
 			this.stopAlarm();
 		}
 	}
