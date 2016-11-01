@@ -15,9 +15,9 @@ public class TheDoorMaze extends GameEngine {
 
 	public static Inventory inventory;
 
-	private int currentMap;
+	public int currentMap;
 	public int nextMap;
-	private ArrayList<Map> maps;
+	public ArrayList<Map> maps;
 
 	private Sound backgroundSound;
 

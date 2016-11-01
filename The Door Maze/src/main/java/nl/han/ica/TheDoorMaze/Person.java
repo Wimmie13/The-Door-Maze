@@ -18,9 +18,9 @@ public class Person extends ActionObject implements ICollidableWithGameObjects {
 		super(image, itemName, x, y);
 		this.world = world;
 		this.text = text;
+		this.message = new MessageBox();
 		this.missionObjective = missionObjective;
 		this.missionComplete = new Sound(world, "src/main/java/nl/han/ica/TheDoorMaze/media/music/missionComplete.mp3");
-		this.message = new MessageBox();
 	}
 
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
@@ -29,14 +29,12 @@ public class Person extends ActionObject implements ICollidableWithGameObjects {
 				if (world.key == ' ' && this.isUsed == false && message.getIsShown() == false) {
 					TheDoorMaze.inventory.addMission(this.missionObjective);
 					message = new MessageBox(world, "Henk", this.text[0], "", "");
-					((Player) g).setWalkAllowed();
 
 					this.isUsed = true;
 					this.missionActive = true;
 				} else if (world.key == ' ' && this.missionActive == true
 						&& TheDoorMaze.inventory.getItem("Flower") == "Flower" && message.getIsShown() == false) {
 					message = new MessageBox(world, "Henk", this.text[1], "", "");
-					((Player) g).setWalkAllowed();
 					TheDoorMaze.inventory.delItem("Flower");
 					TheDoorMaze.inventory.delMission(this.missionObjective);
 					TheDoorMaze.inventory.addItem("Een condoom van een matig merk");
@@ -45,15 +43,12 @@ public class Person extends ActionObject implements ICollidableWithGameObjects {
 					this.missionActive = false;
 				} else if (world.key == ' ' && this.missionActive == true && message.getIsShown() == false) {
 					message = new MessageBox(world, "Henk", this.text[2], "", "");
-					((Player) g).setWalkAllowed();
 
 				} else if (world.key == ' ' && this.missionActive == false && message.getIsShown() == false) {
 					message = new MessageBox(world, "Henk", this.text[3], this.text[4], "");
-					((Player) g).setWalkAllowed();
 
 				} else if (world.key == TheDoorMaze.ENTER && message.getIsShown() == true) {
 					message.removeDashboard();
-					((Player) g).setWalkAllowed();
 
 				}
 			}
