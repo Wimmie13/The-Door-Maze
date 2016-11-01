@@ -6,11 +6,11 @@ public class Mission {
 	private TheDoorMaze world;
 	private String NPCname, name;
 	private Item objective, item;
-	private String[] text;
+	private String[][] text;
 	private Sound missionComplete;
 	private boolean active, complete;
 
-	public Mission(TheDoorMaze world, String NPCname, String name, Item objective, String[] text, Item item) {
+	public Mission(TheDoorMaze world, String NPCname, String name, Item objective, String[][] text, Item item) {
 		this.world = world;
 		this.NPCname = NPCname;
 		this.name = name;

@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
-import nl.han.ica.TheDoorMaze.maps.EindScherm;
-import nl.han.ica.TheDoorMaze.maps.Map1;
-import nl.han.ica.TheDoorMaze.maps.Map2;
-import nl.han.ica.TheDoorMaze.maps.StartScherm;
+import nl.han.ica.TheDoorMaze.media.maps.StartScherm;
+import nl.han.ica.TheDoorMaze.media.maps.EindScherm;
+import nl.han.ica.TheDoorMaze.media.maps.Map1;
+import nl.han.ica.TheDoorMaze.media.maps.Map2;
+import nl.han.ica.TheDoorMaze.media.maps.Map3;
 import processing.core.PApplet;
 
 @SuppressWarnings("serial")
@@ -32,6 +33,7 @@ public class TheDoorMaze extends GameEngine {
 		maps.add(new StartScherm(this, 848, 480, "src/main/java/nl/han/ica/TheDoorMaze/media/startscreenbg.png"));
 		maps.add(new Map1(this, 2910, 480, "src/main/java/nl/han/ica/TheDoorMaze/media/background.fw2.png"));
 		maps.add(new Map2(this, 1455, 480, "src/main/java/nl/han/ica/TheDoorMaze/media/background.fw.png"));
+		maps.add(new Map3(this, 1455, 480, "src/main/java/nl/han/ica/TheDoorMaze/media/background.fw.png"));
 		maps.add(new EindScherm(this, 848, 480, "src/main/java/nl/han/ica/TheDoorMaze/media/endcart.png"));
 		this.currentMap = 0;
 		this.nextMap = 0;

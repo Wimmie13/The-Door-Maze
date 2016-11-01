@@ -21,7 +21,7 @@ public class Map1 extends Map implements IMap{
 		
 		this.objects.add(new Door(this.world, 700, 130, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "2",
 				"BathRoom", true));
-		this.objects.add(new Locker(this.world, 50, 200, "Key #45", "1234"));
+		this.objects.add(new Locker(this.world, 50, 200, "Boeken", "1234"));
 		this.objects.add(new Computer(this.world, 200, 200, "Barry's files"));
 		this.objects.add(new Waterfountain(this.world, 1000, 218));
 		this.objects.add(new Flower(this.world, 900, 200, "Bloem"));
@@ -33,10 +33,10 @@ public class Map1 extends Map implements IMap{
 						"net zoals team boem spang, maar dan minder spang."}));
 		
 		((Person)this.objects.get(this.objects.size() - 1)).addMission("Fix een bloem voor Henk", "Bloem", 
-				new String[] { 
-						"Yo man, ik heb binnenkort een date zou je voor mij een bloem willen fixen?",
-						"Thx man! neem deze condoom, je zult hem nodig hebben ;-)",
-						"Fix eerst die bloem maar eens, dan praten we verder"},
+				new String[][] { 
+					{"Yo man, ik heb binnenkort een date zou je voor mij een bloem willen fixen?"},
+					{"Thx man! neem deze condoom, je zult hem nodig hebben ;-)"},
+					{"Fix eerst die bloem maar eens, dan praten we verder"}},
 				"Een condoom van een matig merk");
 		
 		this.objects.add(new Player(this.world, 600, 200));
