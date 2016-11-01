@@ -8,7 +8,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 
 public class Person extends ActionObject implements ICollidableWithGameObjects {
 	private String[] text;
-	private static boolean missionActive = false;
+	private boolean missionActive = false;
 	private String missionObjective;
 	private MessageBox message;
 	private Sound missionComplete;
