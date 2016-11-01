@@ -11,6 +11,7 @@ public class Locker extends ActionObject implements ICollidableWithGameObjects {
 	private boolean open;
 	private String lock;
 	private MessageBox message;
+	private Notification notify;
 
 	public Locker(TheDoorMaze world, int x, int y, String itemName, String lock) {
 		super(image, itemName, x, y);
@@ -32,6 +33,8 @@ public class Locker extends ActionObject implements ICollidableWithGameObjects {
 				} else if (world.key == ' ' && this.isUsed == false && this.message.getIsShown() == false){
 					message = new MessageBox(world, "Locker", "This is the locker of Ricky", "Enter the right values to open the locker.");
 					message.hasInput();
+				} else if (world.key == ' ' && this.isUsed == true){
+					notify = new Notification(this.world, notify, "This locker is empty");
 				}
 			}
 		}
@@ -42,8 +45,10 @@ public class Locker extends ActionObject implements ICollidableWithGameObjects {
 			this.setOpen();
 			this.isUsed = true;
 			TheDoorMaze.inventory.addItem(this.itemName);
+			this.notify = new Notification(this.world, notify, this.itemName + " is verplaatst naar je inventory.");
 			this.message.removeDashboard();
 		} else {
+			this.notify = new Notification(this.world, notify, "Nummer combinatie fout");
 			this.message.removeDashboard();
 		}
 	}
