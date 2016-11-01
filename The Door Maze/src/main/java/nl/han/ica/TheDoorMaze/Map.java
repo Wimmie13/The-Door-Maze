@@ -43,6 +43,7 @@ public abstract class Map implements IMap{
 		}
 		this.initializeSound();
 		this.drawView();
+		world.keyCode = TheDoorMaze.DOWN;
 	}
 	
 	protected GameObject getPlayer(){

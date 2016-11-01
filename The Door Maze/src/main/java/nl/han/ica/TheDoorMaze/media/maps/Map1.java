@@ -45,12 +45,13 @@ public class Map1 extends Map implements IMap{
 	@Override
 	public void drawView() {
 		this.createEdgeView(848, 480, 0, 80, this.getPlayer());
-		TheDoorMaze.inventory = new Inventory(this.world, 848, 480);
 	}
 
 	public void initializeSound() {
+		if (world.getBackgroundSound().getLocation() != "src/main/java/nl/han/ica/TheDoorMaze/media/music/level1.mp3"){
 		world.getBackgroundSound().pause();
 		world.setBackgroundSound(new Sound(world, "src/main/java/nl/han/ica/TheDoorMaze/media/music/level1.mp3"));
 		world.getBackgroundSound().loop(-1);
+		}
 	}
 }
