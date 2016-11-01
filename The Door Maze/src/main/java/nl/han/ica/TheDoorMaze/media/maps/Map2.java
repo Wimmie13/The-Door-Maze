@@ -19,11 +19,11 @@ public class Map2 extends Map implements IMap{
 		this.objects.add(new Computer(this.world, 600, 200, "Barry's files"));
 		this.objects.add(new Door(this.world, 700, 130, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "1",
 				"BathRoom", false));
-		this.objects.add(new Door(this.world, 1000, 100, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/door3.png", "3",
+		this.objects.add(new Door(this.world, 1000, 110, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/door3.png", "3",
 				"Klas 03", true));
 		this.objects.add(
 				new Person2(world, 400, 200, "src/main/java/nl/han/ica/TheDoorMaze/media/objects/008.png", "Persoon",
-						new String[] { "Ja ik heb de sleutel van lokaal #6 voor je, maar ik ben mijn boeken vergeten.",
+						new String[] { "Ja ik heb de sleutel van lokaal #3 voor je, maar ik ben mijn boeken vergeten.",
 								"Kun je deze toevallig jatten uit de kluis van Ricky? Chris weet vast de code!",
 								"Bij deze heb je je sleutel man",
 								"Fix eerst die boeken maar eens, dan praten we verder",

@@ -24,13 +24,19 @@ public class Date extends ActionObject implements ICollidableWithGameObjects {
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
-				if (world.key == ' ' && this.isUsed == false && message.getIsShown() == false && world.getStopWatch().getTime(TimeUnit.SECONDS) <= 20) {
+				if (world.key == ' ' && this.isUsed == false && message.getIsShown() == false && TheDoorMaze.inventory.getItem("Flower") == "Flower") {
+					world.getStopWatch().stop();
+					message = new MessageBox(world, "Chantal", this.text[0], "Dat heeft wel "+world.getStopWatch().getTime(TimeUnit.SECONDS)+" seconden geduurt!", "Wel mooie bloemen :)");
+					((Player) g).setWalkAllowed();
+					missionComplete.play();
+				}  
+				else if (world.key == ' ' && this.isUsed == false && message.getIsShown() == false && world.getStopWatch().getTime(TimeUnit.SECONDS) <= 60) {
 					world.getStopWatch().stop();
 					message = new MessageBox(world, "Chantal", this.text[0], "Dat heeft wel "+world.getStopWatch().getTime(TimeUnit.SECONDS)+" seconden geduurt!", "");
 					((Player) g).setWalkAllowed();
 					missionComplete.play();
 				}  
-				else if (world.key == ' ' && this.isUsed == false && message.getIsShown() == false && world.getStopWatch().getTime(TimeUnit.SECONDS) >= 20) {
+				else if (world.key == ' ' && this.isUsed == false && message.getIsShown() == false && world.getStopWatch().getTime(TimeUnit.SECONDS) >= 60) {
 					world.getStopWatch().stop();
 					message = new MessageBox(world, "Chantal", this.text[0], "Dat heeft wel "+world.getStopWatch().getTime(TimeUnit.SECONDS)+" seconden geduurt!", "Schiet de volgende keer een beetje op ja!");
 					((Player) g).setWalkAllowed();
