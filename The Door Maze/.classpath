@@ -23,5 +23,6 @@
 	<classpathentry kind="lib" path="lib/processing/sound/mp3spi/1.9.4/mp3spi-1.9.4.jar"/>
 	<classpathentry kind="lib" path="lib/processing/sound/tritonus_aos/1.9.4/tritonus_aos-1.9.4.jar"/>
 	<classpathentry kind="lib" path="lib/processing/sound/tritonus_share/1.0/tritonus_share-1.0.jar"/>
+	<classpathentry kind="lib" path="commons-lang3-3.5.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

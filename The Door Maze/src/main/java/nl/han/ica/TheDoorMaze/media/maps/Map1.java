@@ -1,5 +1,7 @@
 package nl.han.ica.TheDoorMaze.media.maps;
 
+import org.apache.commons.lang3.time.StopWatch;
+
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.TheDoorMaze.Bookshelf;
@@ -42,6 +44,9 @@ public class Map1 extends Map implements IMap{
 	@Override
 	public void drawView() {
 		this.createEdgeView(848, 480, 0, 80, this.getPlayer());
+		if(world.getStopWatch().isStarted() == false){
+			startTimer();
+		}
 	}
 
 	public void initializeSound() {
@@ -50,5 +55,9 @@ public class Map1 extends Map implements IMap{
 		world.setBackgroundSound(new Sound(world, "src/main/java/nl/han/ica/TheDoorMaze/media/music/level1.mp3"));
 		world.getBackgroundSound().loop(-1);
 		}
+	}
+	
+	public void startTimer(){
+		world.getStopWatch().start();; 
 	}
 }

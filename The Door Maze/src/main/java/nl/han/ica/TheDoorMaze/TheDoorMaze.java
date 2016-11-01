@@ -2,9 +2,14 @@ package nl.han.ica.TheDoorMaze;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang3.time.StopWatch;
+
+import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
+import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.TheDoorMaze.media.maps.StartScherm;
+import nl.han.ica.waterworld.TextObject;
 import nl.han.ica.TheDoorMaze.media.maps.EindScherm;
 import nl.han.ica.TheDoorMaze.media.maps.Map1;
 import nl.han.ica.TheDoorMaze.media.maps.Map2;
@@ -18,8 +23,8 @@ public class TheDoorMaze extends GameEngine {
 	private int currentMap;
 	public int nextMap;
 	private ArrayList<Map> maps;
-
 	private Sound backgroundSound;
+	private StopWatch stopWatch;
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.TheDoorMaze.TheDoorMaze" });
@@ -36,7 +41,8 @@ public class TheDoorMaze extends GameEngine {
 		maps.add(new EindScherm(this, 848, 480, "src/main/java/nl/han/ica/TheDoorMaze/media/endcart.png"));
 		this.currentMap = 0;
 		this.nextMap = 0;
-		this.maps.get(currentMap).drawMap();
+		this.maps.get(currentMap).drawMap();	
+		stopWatch = new StopWatch();
 	}
 
 	@Override
@@ -50,7 +56,6 @@ public class TheDoorMaze extends GameEngine {
 				}
 			}
 		}
-
 	}
 
 	public void initializeSound(String muziek) {
@@ -67,6 +72,7 @@ public class TheDoorMaze extends GameEngine {
 		this.backgroundSound = backgroundSound;
 	}
 	
-	
-
+	public StopWatch getStopWatch(){
+		return this.stopWatch;
+	}
 }
