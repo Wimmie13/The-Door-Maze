@@ -41,6 +41,7 @@ public abstract class Map implements IMap{
 				System.out.println("Test");
 			}
 		}
+		this.initializeSound();
 		this.drawView();
 	}
 	
@@ -80,4 +81,8 @@ public abstract class Map implements IMap{
 
 	@Override
 	public abstract void drawView();
+	
+	@Override
+	public abstract void initializeSound();
+	
 }

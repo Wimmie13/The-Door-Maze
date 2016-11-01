@@ -41,6 +41,15 @@ public class Inventory extends GameObject {
 		}
 		return "dit item zit niet in je inventory";
 	}
+	
+	public boolean itemInInventory(String itemName){
+		for (Item b : items) {
+			if (b.getName() == itemName){
+		    return true;
+			}
+		}
+		return false;
+	}
 
 	public void delItem(String itemName){
 		for(int i = 0; i < items.size(); i++){

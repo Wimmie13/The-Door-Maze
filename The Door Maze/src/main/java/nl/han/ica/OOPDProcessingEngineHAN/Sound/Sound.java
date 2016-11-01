@@ -9,6 +9,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 public class Sound {
 
     private AudioPlayer audio;
+    private String location;
 
     /**
      * Create a new Sound object to play music files.
@@ -17,6 +18,7 @@ public class Sound {
      */
     public Sound(GameEngine engine, String soundFileLocation) {
         audio = engine.soundLibrary.loadFile(soundFileLocation);
+        this.location = soundFileLocation;
     }
 
     /**
@@ -133,6 +135,10 @@ public class Sound {
      */
     public AudioPlayer getAudio() {
         return audio;
+    }
+    
+    public String getLocation(){
+    	return this.location;
     }
 
 }

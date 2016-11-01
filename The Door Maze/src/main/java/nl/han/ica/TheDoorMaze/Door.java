@@ -6,18 +6,18 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import java.util.List;
 
 public class Door extends ActionObject implements ICollidableWithGameObjects {
-	private int naar;
+	private String naar;
 	private TheDoorMaze world;
 	private boolean keyNeeded;
 
-	public Door(TheDoorMaze world, int x, int y, String image, int naar, String itemName, boolean keyNeeded) {
+	public Door(TheDoorMaze world, int x, int y, String image, String naar, String itemName, boolean keyNeeded) {
 		super(image, itemName, x, y);
 		this.naar = naar;
 		this.world = world;
 		this.keyNeeded = keyNeeded;
 	}
 
-	public int getNaar() {
+	public String getNaar() {
 		return this.naar;
 	}
 
@@ -28,13 +28,14 @@ public class Door extends ActionObject implements ICollidableWithGameObjects {
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
+				System.out.println(TheDoorMaze.inventory.itemInInventory("2"));
+				System.out.println(TheDoorMaze.inventory.getItem("2"));
 				if(TheDoorMaze.inventory != null){
-					System.out.println("Bier");
-					if (world.keyCode == TheDoorMaze.UP && TheDoorMaze.inventory.getItem(Integer.toString(this.naar)) == Integer.toString(this.naar) && keyNeeded == true) {
+					if (world.keyCode == TheDoorMaze.UP && TheDoorMaze.inventory.itemInInventory(this.naar) == true && keyNeeded == true) {
 						System.out.println("fakka");
-						world.nextMap = this.naar;
+						world.nextMap = Integer.parseInt(this.naar);
 					} else if (world.keyCode == TheDoorMaze.UP && keyNeeded == false){
-						world.nextMap = this.naar;
+						world.nextMap = Integer.parseInt(this.naar);
 					}
 				}
 			}

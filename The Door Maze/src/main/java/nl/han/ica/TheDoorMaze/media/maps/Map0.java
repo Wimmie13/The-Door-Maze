@@ -22,4 +22,10 @@ public class Map0 extends Map implements IMap{
 		this.createView();
 		TheDoorMaze.inventory = new Inventory(this.world, 848, 480);
 	}
+
+	@Override
+	public void initializeSound() {
+		// TODO Auto-generated method stub
+		
+	}
 }

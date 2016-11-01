@@ -1,5 +1,8 @@
 package nl.han.ica.TheDoorMaze.media.maps;
 
+import com.sun.xml.internal.fastinfoset.algorithm.BuiltInEncodingAlgorithm.WordListener;
+
+import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.TheDoorMaze.Bookshelf;
 import nl.han.ica.TheDoorMaze.Computer;
 import nl.han.ica.TheDoorMaze.Door;
@@ -13,13 +16,14 @@ import nl.han.ica.TheDoorMaze.Person;
 import nl.han.ica.TheDoorMaze.Player;
 import nl.han.ica.TheDoorMaze.TheDoorMaze;
 import nl.han.ica.TheDoorMaze.Waterfountain;
+import sun.security.acl.WorldGroupImpl;
 
 public class Map1 extends Map implements IMap{
 
 	public Map1(TheDoorMaze world, int mapWidth, int mapHeight, String background) {
 		super(world, mapWidth, mapHeight, background);
 		
-		this.objects.add(new Door(this.world, 700, 130, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", 2,
+		this.objects.add(new Door(this.world, 700, 130, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "2",
 				"BathRoom", true));
 		this.objects.add(new Locker(this.world, 50, 200, "Key #45", "1234"));
 		this.objects.add(
@@ -44,4 +48,9 @@ public class Map1 extends Map implements IMap{
 		TheDoorMaze.inventory = new Inventory(this.world, 848, 480);
 	}
 
+	public void initializeSound() {
+		world.getBackgroundSound().pause();
+		world.setBackgroundSound(new Sound(world, "src/main/java/nl/han/ica/TheDoorMaze/media/music/level1.mp3"));
+		world.getBackgroundSound().loop(-1);
+	}
 }

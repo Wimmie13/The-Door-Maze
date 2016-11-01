@@ -26,14 +26,12 @@ public class TheDoorMaze extends GameEngine {
 
 	@Override
 	public void setupGame() {
+		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/TheDoorMaze/media/music/intro.mp3");
+		initializeSound("src/main/java/nl/han/ica/TheDoorMaze/media/music/intro.mp3");
 		maps = new ArrayList<>();
 		maps.add(new Map0(this, 848, 480, "src/main/java/nl/han/ica/TheDoorMaze/media/startscreenbg.png"));
 		maps.add(new Map1(this, 2910, 480, "src/main/java/nl/han/ica/TheDoorMaze/media/background.fw2.png"));
 		maps.add(new Map2(this, 1455, 480, "src/main/java/nl/han/ica/TheDoorMaze/media/background.fw.png"));
-
-		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/TheDoorMaze/media/music/intro.mp3");
-		backgroundSound.loop(-1);
-
 		this.currentMap = 0;
 		this.nextMap = 0;
 		this.maps.get(currentMap).drawMap();
@@ -52,10 +50,20 @@ public class TheDoorMaze extends GameEngine {
 
 	}
 
-	private void initializeSound(String muziek) {
+	public void initializeSound(String muziek) {
 		backgroundSound.pause();
 		backgroundSound = new Sound(this, muziek);
 		backgroundSound.loop(-1);
 	}
+
+	public Sound getBackgroundSound() {
+		return backgroundSound;
+	}
+
+	public void setBackgroundSound(Sound backgroundSound) {
+		this.backgroundSound = backgroundSound;
+	}
+	
+	
 
 }
