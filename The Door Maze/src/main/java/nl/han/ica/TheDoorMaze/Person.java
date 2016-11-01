@@ -1,56 +1,67 @@
 package nl.han.ica.TheDoorMaze;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
-import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 
-public class Person extends ActionObject implements ICollidableWithGameObjects {
+public class Person extends ActionObject {
 	private String[] text;
-	private boolean missionActive = false;
-	private String missionObjective;
-	private MessageBox message;
-	private Sound missionComplete;
-	private TheDoorMaze world;
+	private ArrayList<Mission> missions;
 
-	public Person(TheDoorMaze world, int x, int y, String image, String itemName, String[] text, String missionObjective) {
-		super(image, itemName, x, y);
-		this.world = world;
+	public Person(TheDoorMaze world, int x, int y, String image, String itemName, String[] text) {
+		super(world, image, itemName, x, y);
 		this.text = text;
-		this.message = new MessageBox();
-		this.missionObjective = missionObjective;
-		this.missionComplete = new Sound(world, "src/main/java/nl/han/ica/TheDoorMaze/media/music/missionComplete.mp3");
+		this.missions = new ArrayList<>();
 	}
 
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
-			if (g instanceof Player) {
-				if (world.key == ' ' && this.isUsed == false && message.getIsShown() == false) {
-					TheDoorMaze.inventory.addMission(this.missionObjective);
-					message = new MessageBox(world, "Henk", this.text[0], "", "");
-
-					this.isUsed = true;
-					this.missionActive = true;
-				} else if (world.key == ' ' && this.missionActive == true
-						&& TheDoorMaze.inventory.getItem("Flower") == "Flower" && message.getIsShown() == false) {
-					message = new MessageBox(world, "Henk", this.text[1], "", "");
-					TheDoorMaze.inventory.delItem("Flower");
-					TheDoorMaze.inventory.delMission(this.missionObjective);
-					TheDoorMaze.inventory.addItem("Een condoom van een matig merk");
-
-					missionComplete.play();
-					this.missionActive = false;
-				} else if (world.key == ' ' && this.missionActive == true && message.getIsShown() == false) {
-					message = new MessageBox(world, "Henk", this.text[2], "", "");
-
-				} else if (world.key == ' ' && this.missionActive == false && message.getIsShown() == false) {
-					message = new MessageBox(world, "Henk", this.text[3], this.text[4], "");
-
-				} else if (world.key == TheDoorMaze.ENTER && message.getIsShown() == true) {
-					message.removeDashboard();
-
+			if (g instanceof Player && world.keyPressed) {
+				if(world.key == ' ' && this.hasMission() && Map.message.getIsShown() == false){
+					if(this.getActiveMission() != null){
+						this.getActiveMission().checkMission();
+					} else {
+						this.startMission();
+					}
+				} else if (world.key == ' ' && this.getActiveMission() != null && this.hasMission() == false && Map.message.getIsShown() == false) {
+					Map.message = new MessageBox(world, itemName, this.text);
+				} else if (world.key == TheDoorMaze.ENTER) {
+					if(Map.message.getIsShown() == true){
+						Map.message.removeDashboard();
+					}
 				}
+			}
+		}
+	}
+	
+	public void addMission(String missionName, String objective, String[] text, String item){
+		this.missions.add(new Mission(world, this.itemName, missionName, new Item(objective), text, new Item(item)));
+	}
+	
+	private boolean hasMission(){
+		if(this.missions.size() > 0){
+			if(this.missions.get(this.missions.size() - 1).getComplete() == false){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private Mission getActiveMission(){
+		for(int i = 0; i < this.missions.size(); i++){
+			if(this.missions.get(i).getActive() == true){
+				return this.missions.get(i);
+			}
+		}
+		return null;
+	}
+	
+	private void startMission(){
+		for(int i = 0; i < this.missions.size(); i++){
+			if(this.missions.get(i).getComplete() == false){
+				this.missions.get(i).start();
+				return;
 			}
 		}
 	}

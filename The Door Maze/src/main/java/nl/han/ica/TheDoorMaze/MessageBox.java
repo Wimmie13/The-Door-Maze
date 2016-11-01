@@ -1,5 +1,7 @@
 package nl.han.ica.TheDoorMaze;
 
+import java.util.ArrayList;
+
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import processing.core.PGraphics;
@@ -10,7 +12,7 @@ public class MessageBox extends GameObject{
 	private boolean isShown = false;
 	private Dashboard dashboardAction;
 	private float dashboardX, dashboardY, dashboardWidth, dashboardHeight;
-	private String[] text;
+	private ArrayList<String> text;
 	private String input;
 	private String closeMessage;
 	private boolean hasInput;
@@ -19,26 +21,33 @@ public class MessageBox extends GameObject{
 		
 	}
 	
-	public MessageBox(TheDoorMaze world, String NPCname, String line1, String line2){
+	public MessageBox(TheDoorMaze world, String NPCname, String[] lines){
 		this.world = world;
 		this.dashboardWidth = (world.getWidth() / 3) * 2;
 		this.dashboardHeight = 100;
 		this.dashboardX = (world.getWidth() / 3) / 2;
 		this.dashboardY = world.getHeight() - this.dashboardHeight;
-		this.text = new String[]{NPCname, line1, line2};
+		this.text = new ArrayList<>();
+		this.text.add(NPCname);
+		for(String line : lines){
+			this.text.add(line);
+		}
 		this.closeMessage = "Druk op enter om te sluiten";
 		this.input = "";
 		createDashboard();
 	}
 	
-	public MessageBox(TheDoorMaze world, String NPCname, String line1, String line2, String line3){
+	public MessageBox(TheDoorMaze world, String NPCname, String line){
 		this.world = world;
 		this.dashboardWidth = (world.getWidth() / 3) * 2;
-		this.dashboardHeight = 130;
+		this.dashboardHeight = 100;
 		this.dashboardX = (world.getWidth() / 3) / 2;
 		this.dashboardY = world.getHeight() - this.dashboardHeight;
-		this.text = new String[]{NPCname, line1, line2, line3};
+		this.text = new ArrayList<>();
+		this.text.add(NPCname);
+		this.text.add(line);
 		this.closeMessage = "Druk op enter om te sluiten";
+		this.input = "";
 		createDashboard();
 	}
 
@@ -59,10 +68,10 @@ public class MessageBox extends GameObject{
 		g.rect(0, 0, this.dashboardWidth, this.dashboardHeight, 5);
 		g.noStroke();
 		g.fill(255, 0, 0);
-		g.text(text[0], marginLeft, marginTop);
+		g.text(text.get(0), marginLeft, marginTop);
 		g.fill(255);
-		for(int i = 1; i < text.length; i++){
-			g.text(text[i], marginLeft, marginTop + marginText * i);
+		for(int i = 1; i < text.size(); i++){
+			g.text(text.get(i), marginLeft, marginTop + marginText * i);
 		}
 		drawInput(g, (this.dashboardWidth - marginRight), marginTop, marginText);
 		g.textAlign(RIGHT);
@@ -73,13 +82,13 @@ public class MessageBox extends GameObject{
 		dashboardAction = new Dashboard(this.dashboardX, this.dashboardY, this.dashboardWidth, this.dashboardHeight);
 		dashboardAction.addGameObject(this);
 		world.addDashboard(dashboardAction);
-		((Player) world.maps.get(world.currentMap).getPlayer()).setWalkAllowed();
+		((Player) world.getMaps().get(world.getCurrentMap()).getPlayer()).setWalkAllowed();
 		this.isShown = true;
 	}
 	
 	public void removeDashboard(){
 		this.isShown = false;
-		((Player) world.maps.get(world.currentMap).getPlayer()).setWalkAllowed();
+		((Player) world.getMaps().get(world.getCurrentMap()).getPlayer()).setWalkAllowed();
 		world.deleteDashboard(dashboardAction);
 	}
 	
@@ -97,10 +106,6 @@ public class MessageBox extends GameObject{
 		}
 	}
 	
-	public void resetInput(){
-		this.input = "";
-	}
-	
 	public String getInput(){
 		return input;
 	}
@@ -115,6 +120,10 @@ public class MessageBox extends GameObject{
 	public void hasInput(){
 		this.hasInput = true;
 		this.closeMessage = "Druk op enter om door te gaan.";
+	}
+	
+	public void removeCloseMessage(){
+		this.closeMessage = "";
 	}
 
 }

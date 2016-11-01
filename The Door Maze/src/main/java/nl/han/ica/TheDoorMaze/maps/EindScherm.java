@@ -1,4 +1,4 @@
-package nl.han.ica.TheDoorMaze.media.maps;
+package nl.han.ica.TheDoorMaze.maps;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.TheDoorMaze.IMap;
