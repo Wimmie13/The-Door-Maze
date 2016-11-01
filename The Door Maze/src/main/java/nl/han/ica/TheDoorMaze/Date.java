@@ -27,6 +27,7 @@ public class Date extends ActionObject{
 				else if (world.key == ' ' && this.isUsed == false && Map.message.getIsShown() == false && ((Map)Map.alarm.getTargets().get(0)).getGametime() >= 20) {
 					Map.alarm.stop();
 					Map.message = new MessageBox(world, "Chantal", new String[]{this.text[0], "Dat heeft wel "+((Map)Map.alarm.getTargets().get(0)).getGametime()+" seconden geduurt!", "Schiet de volgende keer een beetje op ja!"});
+
 					((Player) g).setWalkAllowed();
 					missionComplete.play();
 				}
