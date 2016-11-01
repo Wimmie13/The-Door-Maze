@@ -33,7 +33,7 @@ public class Date extends ActionObject{
 				else if (world.key == TheDoorMaze.ENTER && Map.message.getIsShown() == true) {
 					Map.message.removeDashboard();
 					((Player) g).setWalkAllowed();
-					world.setNextMap(3);
+					world.setNextMap(world.getMaps().size() - 1);
 				}
 			}
 		}

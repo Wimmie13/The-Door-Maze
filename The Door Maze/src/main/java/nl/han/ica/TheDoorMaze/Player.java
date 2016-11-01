@@ -38,8 +38,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 			this.setxSpeed(0);
 			this.setX(world.getView().getWorldWidth() - this.width);
 		}
-		
-		System.out.println(world.getMaps().get(world.getCurrentMap()).getDate());
 	}
 
 	@Override

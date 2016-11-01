@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
-import nl.han.ica.TheDoorMaze.media.maps.StartScherm;
-import nl.han.ica.TheDoorMaze.media.maps.EindScherm;
-import nl.han.ica.TheDoorMaze.media.maps.Map1;
-import nl.han.ica.TheDoorMaze.media.maps.Map2;
-import nl.han.ica.TheDoorMaze.media.maps.Map3;
+import nl.han.ica.TheDoorMaze.maps.StartScherm;
+import nl.han.ica.TheDoorMaze.maps.Map3;
+import nl.han.ica.TheDoorMaze.maps.EindScherm;
+import nl.han.ica.TheDoorMaze.maps.Map1;
+import nl.han.ica.TheDoorMaze.maps.Map2;
 import processing.core.PApplet;
 
 @SuppressWarnings("serial")

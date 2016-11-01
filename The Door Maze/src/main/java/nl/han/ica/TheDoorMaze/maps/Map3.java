@@ -1,4 +1,4 @@
-package nl.han.ica.TheDoorMaze.media.maps;
+package nl.han.ica.TheDoorMaze.maps;
 
 import nl.han.ica.TheDoorMaze.Computer;
 import nl.han.ica.TheDoorMaze.Date;
@@ -7,7 +7,6 @@ import nl.han.ica.TheDoorMaze.IMap;
 import nl.han.ica.TheDoorMaze.Inventory;
 import nl.han.ica.TheDoorMaze.Map;
 import nl.han.ica.TheDoorMaze.Person;
-import nl.han.ica.TheDoorMaze.Person2;
 import nl.han.ica.TheDoorMaze.Player;
 import nl.han.ica.TheDoorMaze.TheDoorMaze;
 
