@@ -43,6 +43,7 @@ public class TheDoorMaze extends GameEngine {
 			for (int i = 0; i < this.maps.size(); i++) {
 				if(nextMap == i){
 					this.maps.get(i).drawMap();
+					this.maps.get(i).setPlayerPosition(this.currentMap);
 					this.currentMap = this.nextMap;
 				}
 			}

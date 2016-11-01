@@ -16,7 +16,7 @@ public class Map2 extends Map implements IMap{
 		this.objects.add(new Computer(this.world, 600, 200, "Barry's files"));
 		this.objects.add(new Door(this.world, 700, 130, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "1",
 				"BathRoom", false));
-		this.objects.add(new Player(this.world, 600, 200));
+		this.objects.add(new Player(this.world, 500, 200));
 	}
 
 	@Override
