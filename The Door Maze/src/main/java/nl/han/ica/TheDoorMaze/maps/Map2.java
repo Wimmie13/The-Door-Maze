@@ -13,7 +13,6 @@ public class Map2 extends Map implements IMap{
 
 	public Map2(TheDoorMaze world, int mapWidth, int mapHeight, String background) {
 		super(world, mapWidth, mapHeight, background);
-		// TODO Auto-generated constructor stub
 		this.objects.add(new Waterfountain(this.world, 1000, 218));
 		this.objects.add(new Computer(this.world, 600, 200, "Barry's files"));
 		this.objects.add(new Door(this.world, 700, 130, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "1",
@@ -24,10 +23,10 @@ public class Map2 extends Map implements IMap{
 				new String[] {"Succes broer!"}));
 		((Person)this.objects.get(this.objects.size() - 1)).addMission("Steel boeken voor Harry", "Boeken",
 			new String[][]{
-					{"Ja ik heb de sleutel van lokaal #6 voor je, maar ik ben mijn boeken vergeten.", "Kun je deze toevallig jatten uit de kluis van Ricky? Chris weet vast de code!"},
-					{"Fix eerst die boeken maar eens, dan praten we verder",},
-					{"Bij deze heb je je sleutel man"}},
-			"3");
+					{"Ja ik heb de sleutel van lokaal #3 voor je, maar ik ben mijn boeken vergeten.", "Kun je deze toevallig jatten uit de kluis van Ricky? Chris weet vast de code!"},
+					{"Bij deze heb je je sleutel man"},
+					{"Fix eerst die boeken maar eens, dan praten we verder"}},
+			"Key #3");
 		this.objects.add(new Player(this.world, 500, 200));
 	}
 
@@ -38,8 +37,6 @@ public class Map2 extends Map implements IMap{
 
 	@Override
 	public void initializeSound() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

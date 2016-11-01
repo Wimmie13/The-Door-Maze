@@ -25,7 +25,7 @@ public class Map1 extends Map implements IMap{
 		this.objects.add(new Computer(this.world, 200, 200, "Barry's files"));
 		this.objects.add(new Waterfountain(this.world, 1000, 218));
 		this.objects.add(new Flower(this.world, 900, 200, "Bloem"));
-		this.objects.add(new Key(this.world, 1300, 250, "2"));
+		this.objects.add(new Key(this.world, 1300, 250, "Key #2"));
 		this.objects.add(new Bookshelf(this.world, 1600, 170, "playboy"));
 		this.objects.add(new Person(world, 400, 200, "src/main/java/nl/han/ica/TheDoorMaze/media/objects/G001.png", "Henk",
 				new String[]{

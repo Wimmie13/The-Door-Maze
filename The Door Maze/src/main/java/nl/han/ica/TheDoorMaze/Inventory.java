@@ -51,8 +51,8 @@ public class Inventory extends GameObject {
 	
 	public boolean itemInInventory(String itemName){
 		for (Item b : items) {
-			if (b.getName() == itemName){
-		    return true;
+			if (b.getName().substring(b.getName().indexOf('#') + 1).equals(itemName)){
+				return true;
 			}
 		}
 		return false;
