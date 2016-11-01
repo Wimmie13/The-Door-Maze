@@ -73,11 +73,13 @@ public class MessageBox extends GameObject{
 		dashboardAction = new Dashboard(this.dashboardX, this.dashboardY, this.dashboardWidth, this.dashboardHeight);
 		dashboardAction.addGameObject(this);
 		world.addDashboard(dashboardAction);
+		((Player) world.maps.get(world.currentMap).getPlayer()).setWalkAllowed();
 		this.isShown = true;
 	}
 	
 	public void removeDashboard(){
 		this.isShown = false;
+		((Player) world.maps.get(world.currentMap).getPlayer()).setWalkAllowed();
 		world.deleteDashboard(dashboardAction);
 	}
 	

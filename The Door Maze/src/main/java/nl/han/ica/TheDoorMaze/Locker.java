@@ -32,22 +32,19 @@ public class Locker extends ActionObject implements ICollidableWithGameObjects {
 				} else if (world.key == ' ' && this.isUsed == false && this.message.getIsShown() == false){
 					message = new MessageBox(world, "Locker", "This is the locker of Ricky", "Enter the right values to open the locker.");
 					message.hasInput();
-					((Player) g).setWalkAllowed();
 				}
 			}
 		}
 	}
 	
 	private void checkInput(){
-		if(this.message.getInput().length() == 4){
-			if(this.message.getInput().equals(this.lock)){
-				this.setOpen();
-				this.isUsed = true;
-				TheDoorMaze.inventory.addItem(this.itemName);
-				this.message.removeDashboard();
-			} else {
-				this.message.resetInput();
-			}
+		if(this.message.getInput().equals(this.lock)){
+			this.setOpen();
+			this.isUsed = true;
+			TheDoorMaze.inventory.addItem(this.itemName);
+			this.message.removeDashboard();
+		} else {
+			this.message.removeDashboard();
 		}
 	}
 	
