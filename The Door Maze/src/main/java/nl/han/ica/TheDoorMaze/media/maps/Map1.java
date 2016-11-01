@@ -24,10 +24,10 @@ public class Map1 extends Map implements IMap{
 		
 		this.objects.add(new Door(this.world, 700, 130, "src/main/java/nl/han/ica/TheDoorMaze/media/doors/Toilet.png", "2",
 				"BathRoom", true));
-		this.objects.add(new Locker(this.world, 50, 200, "Key #45", "1234"));
+		this.objects.add(new Locker(this.world, 50, 200, "Boeken", "1234"));
 		this.objects.add(
-				new Person(world, 400, 200, "src/main/java/nl/han/ica/TheDoorMaze/media/objects/G001.png", "Persoon",
-						new String[] { "Yo man, ik heb binnenkort een date zou je voor mij een bloem willen fixen?",
+				new Person(world, 1800, 200, "src/main/java/nl/han/ica/TheDoorMaze/media/objects/G001.png", "Persoon",
+						new String[] { "Volgens mij was de code van de kluis van Ricky iets met 1234 ofzo?",
 								"Thx man! neem deze condoom, je zult hem nodig hebben ;-)",
 								"Fix eerst die bloem maar eens, dan praten we verder",
 								"Veel succes op je date broer, d'r insta looks boem spang,",

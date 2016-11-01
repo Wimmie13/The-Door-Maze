@@ -29,19 +29,17 @@ public class Date extends ActionObject implements ICollidableWithGameObjects {
 					message = new MessageBox(world, "Chantal", this.text[0], "Dat heeft wel "+world.getStopWatch().getTime(TimeUnit.SECONDS)+" seconden geduurt!", "");
 					((Player) g).setWalkAllowed();
 					missionComplete.play();
-					this.isUsed = true;
 				}  
 				else if (world.key == ' ' && this.isUsed == false && message.getIsShown() == false && world.getStopWatch().getTime(TimeUnit.SECONDS) >= 20) {
 					world.getStopWatch().stop();
 					message = new MessageBox(world, "Chantal", this.text[0], "Dat heeft wel "+world.getStopWatch().getTime(TimeUnit.SECONDS)+" seconden geduurt!", "Schiet de volgende keer een beetje op ja!");
 					((Player) g).setWalkAllowed();
 					missionComplete.play();
-					this.isUsed = true;
 				}
 				else if (world.key == TheDoorMaze.ENTER && message.getIsShown() == true) {
 					message.removeDashboard();
 					((Player) g).setWalkAllowed();
-					world.nextMap = 3;
+					world.nextMap = 4;
 				}
 			}
 		}
