@@ -41,6 +41,7 @@ public abstract class Map implements IMap, IAlarmListener{
 		}
 	}
 	
+	
 	public void drawMap(){
     	world.deleteAllGameOBjects();
     	world.deleteAllDashboards();
@@ -70,6 +71,7 @@ public abstract class Map implements IMap, IAlarmListener{
 		}
 		return null;
 	}
+	
 	
 	protected void createEdgeView(int screenWidth, int screenHeight, double xOffset, double yOffset, GameObject object) {
 		EdgeFollowingViewport viewPort = new EdgeFollowingViewport(object, screenWidth, screenHeight, xOffset, yOffset);

@@ -8,7 +8,7 @@ import processing.core.PGraphics;
 
 public class MessageBox extends GameObject{
 
-	TheDoorMaze world;
+	private TheDoorMaze world;
 	private boolean isShown = false;
 	private Dashboard dashboardAction;
 	private float dashboardX, dashboardY, dashboardWidth, dashboardHeight;
@@ -18,7 +18,6 @@ public class MessageBox extends GameObject{
 	private boolean hasInput;
 	
 	public MessageBox(){
-		
 	}
 	
 	public MessageBox(TheDoorMaze world, String NPCname, String[] lines){
@@ -99,6 +98,11 @@ public class MessageBox extends GameObject{
 	public void setInput(char input){
 		this.input = this.input + input;
 	}
+	
+	/**
+	 * Haalt bij de input 1 eraf als je backspace doet
+	 * @author Willem
+	 */
 	
 	public void setInputBackspace(){
 		if(this.input.length() > 0){

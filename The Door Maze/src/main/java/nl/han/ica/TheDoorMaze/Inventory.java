@@ -8,7 +8,6 @@ import processing.core.PGraphics;
 
 public class Inventory extends GameObject {
 	private ArrayList<Item> items = new ArrayList<Item>();
-	private ArrayList<Item> InvisibleItems = new ArrayList<Item>();
 	private boolean isOpen;
 	private final TheDoorMaze world;
 	private Dashboard dashboard;
@@ -26,18 +25,12 @@ public class Inventory extends GameObject {
 
 	public void addItem(String name) {
 		this.items.add(new Item(name));
-		this.InvisibleItems.add(new Item(name));
 		Map.notify = new Notification(this.world, name + " is verplaatst naar je inventory.");
 	}
 	
 	public void addItem(Item item) {
 		this.items.add(item);
-		this.InvisibleItems.add(item);
 		Map.notify = new Notification(this.world, item.getName() + " is verplaatst naar je inventory.");
-	}
-	
-	public void addItemInvis(String name){
-		this.InvisibleItems.add(new Item(name));
 	}
 	
 	public String getItem(String itemName){
@@ -82,6 +75,7 @@ public class Inventory extends GameObject {
 		}
 		return false;
 	}
+	
 	public boolean getIsOpen() {
 		return this.isOpen;
 	}

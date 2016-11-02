@@ -40,6 +40,12 @@ public class Date extends ActionObject{
 		}
 	}
 	
+	/**
+	 * Wanneer de game een tijdje duurt gaat de chick naar een andere kamer.
+	 * @author Willem
+	 * 
+	 */
+	
 	public void moveRoom(){
 		for(Map map : world.getMaps()){
 			if(map.getDate() != null){
