@@ -19,7 +19,6 @@ public class StartScherm extends Map implements IMap{
 	@Override
 	public void drawView() {
 		this.createView();
-		TheDoorMaze.inventory = new Inventory(this.world, 848, 480);
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package nl.han.ica.TheDoorMaze;
 
+
+
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 

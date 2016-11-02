@@ -2,12 +2,8 @@ package nl.han.ica.TheDoorMaze;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
-import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-
-import java.util.List;
 
 public class Player extends AnimatedSpriteObject implements IAlarmListener {
 
