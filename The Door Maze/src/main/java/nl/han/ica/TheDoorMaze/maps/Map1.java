@@ -30,8 +30,7 @@ public class Map1 extends Map implements IMap{
 		this.objects.add(new Person(world, 400, 200, "src/main/java/nl/han/ica/TheDoorMaze/media/objects/G001.png", "Chris",
 				new String[]{
 						"Veel succes op je date broer, d'r insta looks boem spang,",
-						"net zoals team boem spang, maar dan minder spang.",
-						"De code van de kluis van Ricky is trouwens 1234."}));
+						"net zoals team boem spang, maar dan minder spang."}));
 		
 		((Person)this.objects.get(this.objects.size() - 1)).addMission("Fix een bloem voor Chris", "Bloem", 
 				new String[][] { 

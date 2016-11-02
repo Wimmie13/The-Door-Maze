@@ -28,6 +28,11 @@ public class Mission {
 		return this.complete;
 	}
 	
+	/**
+	 * Start missie
+	 * @author Willem
+	 */
+	
 	public void start(){
 		Map.message = new MessageBox(world, this.NPCname, this.text[0]);
 		TheDoorMaze.inventory.addMission(this.name);

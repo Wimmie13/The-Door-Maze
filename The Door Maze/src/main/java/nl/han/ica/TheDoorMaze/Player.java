@@ -9,7 +9,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 import java.util.List;
 
-public class Player extends AnimatedSpriteObject implements ICollidableWithGameObjects, IAlarmListener {
+public class Player extends AnimatedSpriteObject implements IAlarmListener {
 
 	final int height = 240;
 	final int width = 100;
@@ -42,21 +42,19 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
 	@Override
 	public void keyPressed(int keyCode, char key) {
-		if (this.walkAllowed == true) {
+		if (this.walkAllowed == true && this.alarmOn == false) {
 			final int speed = 5;
 			if (keyCode == TheDoorMaze.LEFT) {
-				if (this.alarmOn == false) {
 					setDirectionSpeed(270, speed);
 					startAlarm("Walk left");
 				}
-			} else if (keyCode == TheDoorMaze.RIGHT) {
-				if (this.alarmOn == false) {
+			 else if (keyCode == TheDoorMaze.RIGHT) {
 					setDirectionSpeed(90, speed);
 					startAlarm("Walk right");
 				}
 			}
 		}
-	}
+	
 
 	private void startAlarm(String alarmName) {
 		this.alarmOn = true;
@@ -97,10 +95,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 			TheDoorMaze.inventory.removeDashboard();
 		}
 		
-	}
-
-	@Override
-	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 	}
 
 	@Override

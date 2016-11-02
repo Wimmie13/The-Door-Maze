@@ -41,6 +41,7 @@ public abstract class Map implements IMap, IAlarmListener{
 		}
 	}
 	
+	
 	public void drawMap(){
     	world.deleteAllGameOBjects();
     	world.deleteAllDashboards();
