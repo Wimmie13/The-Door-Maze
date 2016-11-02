@@ -32,7 +32,7 @@ public class Map2 extends Map implements IMap{
 
 	@Override
 	public void drawView() {
-		this.createEdgeView(848, 480, 0, 80, this.getPlayer());
+		this.createEdgeView(this.getPlayer());
 	}
 
 	@Override

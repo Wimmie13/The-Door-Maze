@@ -45,7 +45,7 @@ public class Map1 extends Map implements IMap{
 
 	@Override
 	public void drawView() {
-		this.createEdgeView(848, 480, 0, 80, this.getPlayer());
+		this.createEdgeView(this.getPlayer());
 		if(Map.alarm == null){
 			this.startGametimer();
 		}

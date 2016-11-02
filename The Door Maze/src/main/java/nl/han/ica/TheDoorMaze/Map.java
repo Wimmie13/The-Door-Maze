@@ -71,7 +71,8 @@ public abstract class Map implements IMap, IAlarmListener{
 		return null;
 	}
 	
-	protected void createEdgeView(int screenWidth, int screenHeight, double xOffset, double yOffset, GameObject object) {
+	protected void createEdgeView(GameObject object) {
+		int screenWidth = 848, screenHeight = 480, xOffset = 0, yOffset = 80;
 		EdgeFollowingViewport viewPort = new EdgeFollowingViewport(object, screenWidth, screenHeight, xOffset, yOffset);
 		viewPort.setTolerance(0, 0, this.tolerance, this.tolerance);
 		View view = new View(viewPort, this.mapWidth, this.mapHeight);

@@ -1,3 +1,5 @@
+/maps/
+/media/
 /ActionObject.class
 /Bookshelf.class
 /Button.class
@@ -18,5 +20,4 @@
 /Player.class
 /TheDoorMaze.class
 /Waterfountain.class
-/maps/
 /nl/
