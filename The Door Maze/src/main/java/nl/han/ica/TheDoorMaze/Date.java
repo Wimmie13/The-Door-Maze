@@ -45,7 +45,7 @@ public class Date extends ActionObject{
 	public void moveRoom(){
 		for(Map map : world.getMaps()){
 			if(map.getDate() != null){
-				world.getMaps().get(1).getObjects().add(world.getMaps().get(1).getObjects().size()-1, map.getDate());
+				world.getMaps().get(1).getObjects().add(world.getMaps().get(1).getObjects().size()-2, map.getDate());
 				if(world.getCurrentMap() == 1){
 					world.addGameObject(this);
 				} else {
