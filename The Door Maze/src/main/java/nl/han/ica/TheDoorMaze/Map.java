@@ -140,7 +140,7 @@ public abstract class Map implements IMap, IAlarmListener{
 					}
 				}
 			} else if (this.gametime == 100){
-				world.setNextMap(3);
+				world.setNextMap(4);
 				return;
 			}
 			this.gametime++;
