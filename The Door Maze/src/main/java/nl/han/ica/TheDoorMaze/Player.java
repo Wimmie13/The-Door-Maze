@@ -19,7 +19,7 @@ public class Player extends AnimatedSpriteObject implements IAlarmListener {
 		this.world = world;
 		this.alarmOn = false;
 		this.walkAllowed = true;
-		
+
 		this.setX(x);
 		this.setY(y);
 	}
@@ -39,18 +39,26 @@ public class Player extends AnimatedSpriteObject implements IAlarmListener {
 	@Override
 	public void keyPressed(int keyCode, char key) {
 		if (this.walkAllowed == true && this.alarmOn == false) {
-			final int speed = 5;
-			if (keyCode == TheDoorMaze.LEFT) {
-					setDirectionSpeed(270, speed);
-					startAlarm("Walk left");
-				}
-			 else if (keyCode == TheDoorMaze.RIGHT) {
-					setDirectionSpeed(90, speed);
-					startAlarm("Walk right");
-				}
-			}
+			playerWalk(keyCode);
 		}
+	}
 	
+	private void playerWalk(int direction){
+		String alarmName;
+		int setDirection;
+		if(direction == TheDoorMaze.LEFT){
+			alarmName = "Walk left";
+			setDirection = 270;
+		} else if(direction == TheDoorMaze.RIGHT) {
+			alarmName = "Walk right";
+			setDirection = 90;
+		} else {
+			return;
+		}
+		setDirectionSpeed(setDirection, 5);
+		startAlarm(alarmName);
+		
+	}
 
 	private void startAlarm(String alarmName) {
 		this.alarmOn = true;
@@ -60,8 +68,8 @@ public class Player extends AnimatedSpriteObject implements IAlarmListener {
 	}
 
 	private void stopAlarm() {
+		this.setSpeed(0);
 		this.alarm.stop();
-		this.alarm = null;
 		this.alarmOn = false;
 
 		if (this.getDirection() == 270) {
@@ -75,22 +83,17 @@ public class Player extends AnimatedSpriteObject implements IAlarmListener {
 	public void keyReleased(int keyCode, char key) {
 		if (TheDoorMaze.inventory.getIsOpen() == false) {
 			if (this.alarm != null) {
-				setSpeed(0);
 				startAlarm("STOP");
 			}
 		}
 		if (key == 'i' && TheDoorMaze.inventory.getIsOpen() == false && Map.message.getIsShown() == false) {
 			this.setWalkAllowed();
 			TheDoorMaze.inventory.createDashboard();
-			this.setSpeed(0);
-			if (this.alarmOn == true) {
-				startAlarm("STOP");
-			}
 		} else if (key == 'i' && Map.message.getIsShown() == false) {
 			this.setWalkAllowed();
 			TheDoorMaze.inventory.removeDashboard();
 		}
-		
+
 	}
 
 	@Override

@@ -36,7 +36,7 @@ public class Person extends ActionObject {
 	}
 	
 	public void addMission(String missionName, String objective, String[][] text, String item){
-		this.missions.add(new Mission(world, this.itemName, missionName, new Item(objective), text, new Item(item)));
+		this.missions.add(new Mission(world, this.itemName, missionName, objective, text, item));
 	}
 	
 	private boolean hasMission(){

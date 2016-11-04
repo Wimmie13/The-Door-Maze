@@ -28,11 +28,6 @@ public class Inventory extends GameObject {
 		Map.notify = new Notification(this.world, name + " is verplaatst naar je inventory.");
 	}
 	
-	public void addItem(Item item) {
-		this.items.add(item);
-		Map.notify = new Notification(this.world, item.getName() + " is verplaatst naar je inventory.");
-	}
-	
 	public String getItem(String itemName){
 		for (Item b : items) {
 			if (b.getName() == itemName){
@@ -54,14 +49,6 @@ public class Inventory extends GameObject {
 	public void delItem(String itemName){
 		for(int i = 0; i < items.size(); i++){
 			if (items.get(i).getName() == itemName){
-				items.remove(i);
-			}
-		}
-	}
-	
-	public void delItem(Item item){
-		for(int i = 0; i < items.size(); i++){
-			if (items.get(i).getName().equals(item.getName())){
 				items.remove(i);
 			}
 		}
@@ -124,9 +111,7 @@ public class Inventory extends GameObject {
 	public void createDashboard() {
 		this.isOpen = true;
 		dashboard = new Dashboard(this.dashboardX, this.dashboardY, this.dashboardWidth, this.dashboardHeight);
-
 		dashboard.addGameObject(this);
-
 		world.addDashboard(dashboard);
 	}
 	

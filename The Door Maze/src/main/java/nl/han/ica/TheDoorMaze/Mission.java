@@ -4,13 +4,12 @@ import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 
 public class Mission {
 	private TheDoorMaze world;
-	private String NPCname, name;
-	private Item objective, item;
+	private String NPCname, name, objective, item;
 	private String[][] text;
 	private Sound missionComplete;
 	private boolean active, complete;
 
-	public Mission(TheDoorMaze world, String NPCname, String name, Item objective, String[][] text, Item item) {
+	public Mission(TheDoorMaze world, String NPCname, String name, String objective, String[][] text, String item) {
 		this.world = world;
 		this.NPCname = NPCname;
 		this.name = name;
@@ -40,7 +39,7 @@ public class Mission {
 	}
 	
 	public void checkMission(){
-		if(TheDoorMaze.inventory.getItem(this.objective.getName()).equals(this.objective.getName())) {
+		if(TheDoorMaze.inventory.getItem(this.objective).equals(this.objective)) {
 			Map.message = new MessageBox(world, this.NPCname, this.text[1]);
 			TheDoorMaze.inventory.delItem(this.objective);
 			TheDoorMaze.inventory.delMission(this.name);
